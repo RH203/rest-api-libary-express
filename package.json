@@ -7,6 +7,9 @@
     "test": "jest -i",
     "prisma:generate": "npx prisma generate",
     "prisma:migrate": "npx prisma migrate dev",
+    "prisma:pull": "npx prisma db pull",
+    "prisma:reset": "npx prisma migrate reset",
+    "seeder": "node seeder/index.js",
     "dev": "nodemon src/main.js",
     "format": "prettier --write ."
   },
@@ -31,6 +34,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.26.0",
+    "@faker-js/faker": "^9.2.0",
     "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",

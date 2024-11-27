@@ -9,6 +9,68 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model Student {
+  id        Int      @id @default(autoincrement())
+  email     String   @db.VarChar(100)
+  password  String   @db.VarChar(100)
+  createdAt DateTime
+  role      Role
+  gender    Gender
+
+  @@map("students")
+}
+
+model Book {
+  id              Int         @id @default(autoincrement())
+  title           String      @db.VarChar(255)
+  author          String      @db.VarChar(255)
+  isbn            String?     @unique @db.VarChar(255)
+  createdAt       DateTime
+  updatedAt       DateTime    @updatedAt
+  publisher       Publisher   @relation(fields: [publisherBookId], references: [id])
+  publisherBookId Int
+  genres          GenreBook[]
+
+  @@map("books")
+}
+
+model Publisher {
+  id    Int    @id @default(autoincrement())
+  name  String @db.VarChar(100)
+  books Book[]
+
+  @@map("publishers")
+}
+
+model Genre {
+  id        Int         @id @default(autoincrement())
+  name      String      @db.VarChar(100)
+  GenreBook GenreBook[]
+
+  @@map("genres")
+}
+
+model GenreBook {
+  id      Int   @id @default(autoincrement())
+  book    Book  @relation(fields: [bookId], references: [id])
+  genre   Genre @relation(fields: [genreId], references: [id])
+  bookId  Int
+  genreId Int
+
+  @@unique([bookId, genreId])
+  @@map("genre_books")
+}
+
+enum Role {
+  Student
+  Admin
+}
+
+enum Gender {
+  Male
+  Female
 }
