@@ -3,7 +3,7 @@ import {
   seederGenre,
   seederGenreBook,
   seederPublisher,
-} from './seeder-book.js';
+} from "./seeder-book.js";
 
 // seederGenre()
 // seederPublisher()

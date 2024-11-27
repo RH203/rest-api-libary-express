@@ -1,8 +1,8 @@
 // seeder genre
-import { prismaClient } from '../src/app/database.js';
-import { logger } from '../src/app/logger.js';
-import { faker } from '@faker-js/faker/locale/id_ID';
-import { clearDatabase } from './utils-seeder.js';
+import { prismaClient } from "../src/app/database.js";
+import { logger } from "../src/app/logger.js";
+import { faker } from "@faker-js/faker/locale/id_ID";
+import { clearDatabase } from "./utils-seeder.js";
 
 const seederGenre = async () => {
   try {
@@ -14,9 +14,9 @@ const seederGenre = async () => {
         },
       });
     }
-    logger.info('Genres seeded successfully!');
+    logger.info("Genres seeded successfully!");
   } catch (error) {
-    logger.error('Error seeding genres:', error);
+    logger.error("Error seeding genres:", error);
   }
 };
 
@@ -30,9 +30,9 @@ const seederPublisher = async () => {
         },
       });
     }
-    logger.info('Genres seeded successfully!');
+    logger.info("Genres seeded successfully!");
   } catch (error) {
-    logger.error('Error seeding publisher:', error);
+    logger.error("Error seeding publisher:", error);
   }
 };
 
@@ -51,9 +51,9 @@ const seederBook = async () => {
         },
       });
     }
-    logger.info('Books seeded successfully!');
+    logger.info("Books seeded successfully!");
   } catch (error) {
-    logger.error('Error seeding books:', error);
+    logger.error("Error seeding books:", error);
   }
 };
 
@@ -82,9 +82,9 @@ const seederGenreBook = async () => {
       }
     }
 
-    logger.info('Genres successfully linked to books!');
+    logger.info("Genres successfully linked to books!");
   } catch (error) {
-    logger.error('Error linking genres to books:', error);
+    logger.error("Error linking genres to books:", error);
   }
 };
 

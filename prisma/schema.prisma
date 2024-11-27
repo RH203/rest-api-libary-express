@@ -15,9 +15,10 @@ datasource db {
 
 model Student {
   id        Int      @id @default(autoincrement())
-  email     String   @db.VarChar(100)
+  name      String   @db.VarChar(100)
+  email     String   @db.VarChar(255)
   password  String   @db.VarChar(100)
-  createdAt DateTime
+  createdAt DateTime @default(now())
   role      Role
   gender    Gender
 
@@ -29,7 +30,7 @@ model Book {
   title           String      @db.VarChar(255)
   author          String      @db.VarChar(255)
   isbn            String?     @unique @db.VarChar(255)
-  createdAt       DateTime
+  createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
   publisher       Publisher   @relation(fields: [publisherBookId], references: [id])
   publisherBookId Int
