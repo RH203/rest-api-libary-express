@@ -1,5 +1,5 @@
-import {PrismaClient} from "@prisma/client";
-import {logger} from "./logger";
+import { PrismaClient } from '@prisma/client';
+import { logger } from './logger.js';
 
 export const prismaClient = new PrismaClient({
   log: [
@@ -19,8 +19,8 @@ export const prismaClient = new PrismaClient({
       emit: 'event',
       level: 'warn',
     },
-    ]
-})
+  ],
+});
 
 prismaClient.$on('error', e => {
   logger.error(e);
