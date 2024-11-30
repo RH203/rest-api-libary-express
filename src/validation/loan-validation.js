@@ -6,4 +6,9 @@ const loanValidation = Joi.object({
   notes: Joi.string().max(100).optional().allow(""),
 });
 
-export { loanValidation };
+const returnValidation = Joi.object({
+  student_id: Joi.number().required(),
+  book_id: Joi.number().required(),
+});
+
+export { loanValidation, returnValidation };
