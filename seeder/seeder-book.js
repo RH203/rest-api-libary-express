@@ -45,6 +45,7 @@ const seederBook = async () => {
           title: faker.book.title(),
           author: faker.book.author(),
           isbn: faker.string.uuid(),
+          description: faker.lorem.paragraph(),
           publisherBookId: publisherId,
           createdAt: new Date(),
           updatedAt: new Date(),
