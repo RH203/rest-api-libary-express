@@ -7,4 +7,9 @@ const registrationUserValidation = Joi.object({
   gender: Joi.string().valid("Male", "Female").required(),
 });
 
-export { registrationUserValidation };
+const loginUserValidation = Joi.object({
+  email: Joi.string().email().required(),
+  password: Joi.string().required(),
+});
+
+export { registrationUserValidation, loginUserValidation };
