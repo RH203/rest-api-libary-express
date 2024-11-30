@@ -1,4 +1,5 @@
 import publicService from "../service/public-service.js";
+import { logger } from "../app/logger.js";
 
 // Registrasi controller
 const registrasi = async (req, res, next) => {
@@ -64,4 +65,17 @@ const getBookById = async (req, res, next) => {
   }
 };
 
-export default { registrasi, login, getBookList, getBookById };
+const loanBook = async (req, res, next) => {
+  try {
+    logger.info(req.body);
+    const result = await publicService.loanBook(req);
+    res.status(200).json({
+      status: 200,
+      data: result,
+    });
+  } catch (e) {
+    next(e);
+  }
+};
+
+export default { registrasi, login, getBookList, getBookById, loanBook };
