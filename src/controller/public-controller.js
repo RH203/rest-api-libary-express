@@ -78,4 +78,17 @@ const loanBook = async (req, res, next) => {
   }
 };
 
-export default { registrasi, login, getBookList, getBookById, loanBook };
+const returnBook = async (req, res, next) => {
+  try {
+    const result = await publicService.returnBook(req)
+
+    res.status(200).json({
+      status: 200,
+      data: result.message,
+    })
+  }catch (e) {
+    next(e);
+  }
+}
+
+export default { registrasi, login, getBookList, getBookById, loanBook, returnBook };
