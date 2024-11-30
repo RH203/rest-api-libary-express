@@ -1,5 +1,4 @@
 import publicService from "../service/public-service.js";
-import {logger} from "../app/logger.js";
 
 // Registrasi controller
 const registrasi = async (req, res, next) => {
