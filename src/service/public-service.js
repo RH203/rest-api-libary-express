@@ -1,16 +1,12 @@
-import { ResponseError } from "../error/response-error.js";
-import { prismaClient } from "../app/database.js";
+import {ResponseError} from "../error/response-error.js";
+import {prismaClient} from "../app/database.js";
 import bcrypt from "bcrypt";
-import { Role } from "@prisma/client";
-import { validate } from "../validation/validation.js";
-import {
-  loginUserValidation,
-  registrationUserValidation,
-} from "../validation/user-validation.js";
-import { generateJWT } from "../helpers/jwt-config.js";
-import { capitalizeWord } from "../helpers/string-helper.js";
-import { loanValidation } from "../validation/loan-validation.js";
-import { logger } from "../app/logger.js";
+import {Role} from "@prisma/client";
+import {validate} from "../validation/validation.js";
+import {loginUserValidation, registrationUserValidation,} from "../validation/user-validation.js";
+import {generateJWT} from "../helpers/jwt-config.js";
+import {capitalizeWord} from "../helpers/string-helper.js";
+import {loanValidation, returnValidation,} from "../validation/loan-validation.js";
 
 // Registrasi
 const registrasi = async (req, res) => {
@@ -189,7 +185,11 @@ const loanBook = async (req, res) => {
     }),
     prismaClient.book.update({
       where: { id: data.book_id },
-      data: { stok: stockBook.stok - 1 },
+      data: {
+        stok: {
+          decrement: 1,
+        },
+      },
     }),
   ]);
 
@@ -201,7 +201,44 @@ const loanBook = async (req, res) => {
 
 // mengembalikan buku
 const returnBook = async (req, res) => {
+  const data = validate(returnValidation, req.body);
 
-}
+  const isBookBorrowedByStudent = await prismaClient.peminjaman.count({
+    where: {
+      book_id: data.book_id,
+      student_id: data.student_id,
+    },
+  });
 
-export default { registrasi, login, getBookList, getBookById, loanBook, returnBook };
+  if (isBookBorrowedByStudent < 1) {
+    throw new ResponseError(400, "The user has not borrowed this book.");
+  }
+
+
+  const updateBook = await prismaClient.$transaction([
+    prismaClient.book.update({
+      where: { id: data.book_id },
+      data: { stok: { increment: 1 } },
+    }),
+    prismaClient.peminjaman.delete({
+      where: {
+        student_id_book_id: {
+          student_id: data.student_id,
+          book_id: data.book_id,
+        },
+      },
+
+    }),
+  ]);
+
+  return { message: "Book successfully returned and stock updated." };
+};
+
+export default {
+  registrasi,
+  login,
+  getBookList,
+  getBookById,
+  loanBook,
+  returnBook,
+};
