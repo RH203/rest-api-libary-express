@@ -71,13 +71,16 @@ model GenreBook {
 }
 
 model Peminjaman {
-  id        Int     @id @default(autoincrement())
-  student   Student @relation(fields: [studentId], references: [id])
-  book      Book    @relation(fields: [bookId], references: [id])
-  studentId Int
-  bookId    Int
+  id          Int       @id @default(autoincrement())
+  student     Student   @relation(fields: [student_id], references: [id])
+  book        Book      @relation(fields: [book_id], references: [id])
+  borrow_date DateTime? @default(now())
+  return_date DateTime? @updatedAt
+  notes       String?   @db.VarChar(100)
+  student_id  Int
+  book_id     Int
 
-  @@unique([studentId, bookId])
+  @@unique([student_id, book_id])
   @@map("peminjaman_buku")
 }
 
