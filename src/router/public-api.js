@@ -13,6 +13,8 @@ publicApi.get("/api/book", authMiddleware, publicController.getBookList);
 // Detail buku
 publicApi.get("/api/book/:id", authMiddleware, publicController.getBookById);
 // Melihat member lain yang aktif
+
 // meminjam buku
+publicApi.post("/api/book/borrow", authMiddleware, publicController.loanBook);
 
 export { publicApi };
