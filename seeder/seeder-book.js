@@ -46,6 +46,7 @@ const seederBook = async () => {
           author: faker.book.author(),
           isbn: faker.string.uuid(),
           description: faker.lorem.paragraph(),
+          stok: Math.floor(Math.random() * 20) + 1,
           publisherBookId: publisherId,
           createdAt: new Date(),
           updatedAt: new Date(),
