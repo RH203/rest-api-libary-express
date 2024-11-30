@@ -35,11 +35,11 @@ const getBookList = async (req, res, next) => {
     res.status(200).json({
       status: 200,
       data: result,
-    })
+    });
   } catch (e) {
     next(e);
   }
-}
+};
 
 // Get book by id
 const getBookById = async (req, res, next) => {
@@ -48,8 +48,8 @@ const getBookById = async (req, res, next) => {
     if (!id) {
       res.status(404).json({
         status: 404,
-        message: 'Not Found',
-      })
+        message: "Not Found",
+      });
       return;
     }
 
@@ -58,10 +58,10 @@ const getBookById = async (req, res, next) => {
     res.status(200).json({
       status: 200,
       data: result,
-    })
+    });
   } catch (e) {
     next(e);
   }
-}
+};
 
 export default { registrasi, login, getBookList, getBookById };
