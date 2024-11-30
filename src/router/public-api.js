@@ -16,5 +16,7 @@ publicApi.get("/api/book/:id", authMiddleware, publicController.getBookById);
 
 // meminjam buku
 publicApi.post("/api/book/borrow", authMiddleware, publicController.loanBook);
+// Mengembalikan buku
+publicApi.post("/api/book/return", authMiddleware, publicController.returnBook);
 
 export { publicApi };
