@@ -1,10 +1,14 @@
-import {ResponseError} from "../error/response-error.js";
-import {prismaClient} from "../app/database.js";
+import { ResponseError } from "../error/response-error.js";
+import { prismaClient } from "../app/database.js";
 import bcrypt from "bcrypt";
-import {Role} from "@prisma/client";
-import {validate} from "../validation/validation.js";
-import {loginUserValidation, registrationUserValidation,} from "../validation/user-validation.js";
-import {generateJWT} from "../helpers/jwt-config.js";
+import { Role } from "@prisma/client";
+import { validate } from "../validation/validation.js";
+import {
+  loginUserValidation,
+  registrationUserValidation,
+} from "../validation/user-validation.js";
+import { generateJWT } from "../helpers/jwt-config.js";
+import {capitalizeWord} from "../helpers/string-helper.js";
 
 // Registrasi
 const registrasi = async (req, res) => {
@@ -19,6 +23,8 @@ const registrasi = async (req, res) => {
   }
 
   data.password = await bcrypt.hash(data.password, 10);
+  // Capital nama
+  data.name = capitalizeWord(data.name)
 
   const result = await prismaClient.student.create({
     data: {
@@ -66,22 +72,23 @@ const getBookList = async (req, res) => {
       author: true,
       description: true,
       isbn: true,
+      stok: true,
       genres: {
         select: {
           genre: {
             select: {
-              name: true
-            }
-          }
-        }
+              name: true,
+            },
+          },
+        },
       },
       publisher: {
         select: {
-          name: true
-        }
-      }
-    }
-  })
+          name: true,
+        },
+      },
+    },
+  });
 
   return data.map(book => ({
     id: book.id,
@@ -89,14 +96,14 @@ const getBookList = async (req, res) => {
     author: book.author,
     description: book.description,
     isbn: book.isbn,
-    genres: book.genres.map((genre) => genre.genre.name),
+    stok: book.stok,
+    genres: book.genres.map(genre => genre.genre.name),
     publisher: book.publisher?.name || "Unknown",
-  }))
-}
+  }));
+};
 
 // Detail buku
-const getBookById = async (id) => {
-
+const getBookById = async id => {
   const data = await prismaClient.book.findFirst({
     where: { id: id },
     select: {
@@ -105,22 +112,23 @@ const getBookById = async (id) => {
       author: true,
       description: true,
       isbn: true,
+      stok: true,
       genres: {
         select: {
           genre: {
             select: {
-              name: true
-            }
-          }
-        }
+              name: true,
+            },
+          },
+        },
       },
       publisher: {
         select: {
-          name: true
-        }
-      }
-    }
-  })
+          name: true,
+        },
+      },
+    },
+  });
 
   if (!data) {
     throw new ResponseError(400, "No book found with id " + req.params.id);
@@ -132,12 +140,14 @@ const getBookById = async (id) => {
     author: data.author,
     description: data.description,
     isbn: data.isbn,
-    genres: data.genres.map((genre) => genre.genre.name),
+    stok: data.stok,
+    genres: data.genres.map(genre => genre.genre.name),
     publisher: data.publisher?.name || "Unknown",
-  }
-}
+  };
+};
 
-// Melihat member lain yang aktif
+// TODO: Melihat member lain yang aktif
+
 // meminjam buku
 
-export default { registrasi, login, getBookList, getBookById};
+export default { registrasi, login, getBookList, getBookById };
