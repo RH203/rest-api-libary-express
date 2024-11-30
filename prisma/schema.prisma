@@ -16,7 +16,7 @@ datasource db {
 model Student {
   id        Int      @id @default(autoincrement())
   name      String   @db.VarChar(100)
-  email     String   @db.VarChar(255)
+  email     String   @unique @db.VarChar(255)
   password  String   @db.VarChar(100)
   createdAt DateTime @default(now())
   role      Role
@@ -28,6 +28,7 @@ model Student {
 model Book {
   id              Int         @id @default(autoincrement())
   title           String      @db.VarChar(255)
+  description     String?     @db.VarChar(255)
   author          String      @db.VarChar(255)
   isbn            String?     @unique @db.VarChar(255)
   createdAt       DateTime    @default(now())
