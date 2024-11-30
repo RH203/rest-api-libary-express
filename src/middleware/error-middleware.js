@@ -1,6 +1,6 @@
 import { ResponseError } from "../error/response-error.js";
 
-const errorMiddleware = async (err, req, res, next) => {
+const errorMiddleware = (err, req, res, next) => {
   if (!err) {
     next();
     return;
@@ -10,6 +10,7 @@ const errorMiddleware = async (err, req, res, next) => {
     res
       .status(err.status)
       .json({
+        status: err.status,
         errors: err.message,
       })
       .end();
@@ -17,6 +18,7 @@ const errorMiddleware = async (err, req, res, next) => {
     res
       .status(500)
       .json({
+        status: 500,
         errors: err.message,
       })
       .end();
