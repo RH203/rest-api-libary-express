@@ -14,28 +14,31 @@ datasource db {
 }
 
 model Student {
-  id        Int      @id @default(autoincrement())
-  name      String   @db.VarChar(100)
-  email     String   @unique @db.VarChar(255)
-  password  String   @db.VarChar(100)
-  createdAt DateTime @default(now())
-  role      Role
-  gender    Gender
+  id         Int          @id @default(autoincrement())
+  name       String       @db.VarChar(100)
+  email      String       @unique @db.VarChar(255)
+  password   String       @db.VarChar(100)
+  createdAt  DateTime     @default(now())
+  role       Role
+  gender     Gender
+  Peminjaman Peminjaman[]
 
   @@map("students")
 }
 
 model Book {
-  id              Int         @id @default(autoincrement())
-  title           String      @db.VarChar(255)
-  description     String?     @db.VarChar(255)
-  author          String      @db.VarChar(255)
-  isbn            String?     @unique @db.VarChar(255)
-  createdAt       DateTime    @default(now())
-  updatedAt       DateTime    @updatedAt
-  publisher       Publisher   @relation(fields: [publisherBookId], references: [id])
+  id              Int          @id @default(autoincrement())
+  title           String       @db.VarChar(255)
+  description     String?      @db.VarChar(255)
+  author          String       @db.VarChar(255)
+  isbn            String?      @unique @db.VarChar(255)
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  publisher       Publisher    @relation(fields: [publisherBookId], references: [id])
   publisherBookId Int
   genres          GenreBook[]
+  stok            Int
+  Peminjaman      Peminjaman[]
 
   @@map("books")
 }
@@ -65,6 +68,17 @@ model GenreBook {
 
   @@unique([bookId, genreId])
   @@map("genre_books")
+}
+
+model Peminjaman {
+  id        Int     @id @default(autoincrement())
+  student   Student @relation(fields: [studentId], references: [id])
+  book      Book    @relation(fields: [bookId], references: [id])
+  studentId Int
+  bookId    Int
+
+  @@unique([studentId, bookId])
+  @@map("peminjaman_buku")
 }
 
 enum Role {
