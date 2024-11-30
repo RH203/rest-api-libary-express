@@ -7,7 +7,7 @@ if (!SECRET_KEY) {
 }
 
 // Generate key
-const generateJWT = (name, role, expiresIn = "1h") => {
+const generateJWT = (name, role, expiresIn = "24h") => {
   return jwt.sign(
     {
       data: {
