@@ -8,7 +8,9 @@ import {
   registrationUserValidation,
 } from "../validation/user-validation.js";
 import { generateJWT } from "../helpers/jwt-config.js";
-import {capitalizeWord} from "../helpers/string-helper.js";
+import { capitalizeWord } from "../helpers/string-helper.js";
+import { loanValidation } from "../validation/loan-validation.js";
+import { logger } from "../app/logger.js";
 
 // Registrasi
 const registrasi = async (req, res) => {
@@ -24,7 +26,7 @@ const registrasi = async (req, res) => {
 
   data.password = await bcrypt.hash(data.password, 10);
   // Capital nama
-  data.name = capitalizeWord(data.name)
+  data.name = capitalizeWord(data.name);
 
   const result = await prismaClient.student.create({
     data: {
@@ -149,5 +151,57 @@ const getBookById = async id => {
 // TODO: Melihat member lain yang aktif
 
 // meminjam buku
+const loanBook = async (req, res) => {
+  const data = validate(loanValidation, req.body);
 
-export default { registrasi, login, getBookList, getBookById };
+  const isBookAlreadyBorrowedByStudent = await prismaClient.peminjaman.count({
+    where: {
+      book_id: data.book_id,
+      student_id: data.student_id,
+    },
+  });
+
+  if (isBookAlreadyBorrowedByStudent >= 1) {
+    throw new ResponseError(
+      400,
+      "The book is already borrowed. Please return it first.",
+    );
+  }
+
+  const stockBook = await prismaClient.book.findFirst({
+    where: { id: data.book_id },
+    select: { stok: true },
+  });
+
+  if (stockBook.stok <= 0) {
+    throw new ResponseError(400, "Book is out of stock.");
+  }
+
+  const [loan, updateStock] = await prismaClient.$transaction([
+    prismaClient.peminjaman.create({
+      data: {
+        borrow_date: new Date(),
+        return_date: new Date(),
+        student_id: data.student_id,
+        book_id: data.book_id,
+        notes: data.notes,
+      },
+    }),
+    prismaClient.book.update({
+      where: { id: data.book_id },
+      data: { stok: stockBook.stok - 1 },
+    }),
+  ]);
+
+  if (!updateStock) {
+    throw new ResponseError(500, "Error occurred while updating book stock.");
+  }
+  return loan;
+};
+
+// mengembalikan buku
+const returnBook = async (req, res) => {
+
+}
+
+export default { registrasi, login, getBookList, getBookById, loanBook, returnBook };
