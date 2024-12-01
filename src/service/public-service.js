@@ -1,12 +1,18 @@
-import {ResponseError} from "../error/response-error.js";
-import {prismaClient} from "../app/database.js";
+import { ResponseError } from "../error/response-error.js";
+import { prismaClient } from "../app/database.js";
 import bcrypt from "bcrypt";
-import {Role} from "@prisma/client";
-import {validate} from "../validation/validation.js";
-import {loginUserValidation, registrationUserValidation,} from "../validation/user-validation.js";
-import {generateJWT} from "../helpers/jwt-config.js";
-import {capitalizeWord} from "../helpers/string-helper.js";
-import {loanValidation, returnValidation,} from "../validation/loan-validation.js";
+import { Role } from "@prisma/client";
+import { validate } from "../validation/validation.js";
+import {
+  loginUserValidation,
+  registrationUserValidation,
+} from "../validation/user-validation.js";
+import { generateJWT } from "../helpers/jwt-config.js";
+import { capitalizeWord } from "../helpers/string-helper.js";
+import {
+  loanValidation,
+  returnValidation,
+} from "../validation/loan-validation.js";
 
 // Registrasi
 const registrasi = async (req, res) => {
@@ -214,7 +220,6 @@ const returnBook = async (req, res) => {
     throw new ResponseError(400, "The user has not borrowed this book.");
   }
 
-
   const updateBook = await prismaClient.$transaction([
     prismaClient.book.update({
       where: { id: data.book_id },
@@ -227,7 +232,6 @@ const returnBook = async (req, res) => {
           book_id: data.book_id,
         },
       },
-
     }),
   ]);
 
