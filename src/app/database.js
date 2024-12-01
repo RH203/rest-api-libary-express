@@ -26,9 +26,9 @@ prismaClient.$on("error", e => {
   logger.error(e);
 });
 
-prismaClient.$on("query", e => {
-  logger.info(e);
-});
+// prismaClient.$on("query", e => {
+//   logger.info(e);
+// });
 
 prismaClient.$on("info", e => {
   logger.info(e);
