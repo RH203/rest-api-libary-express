@@ -1,4 +1,5 @@
 import { verifyJWT } from "../helpers/jwt-config.js";
+import { logger } from "../app/logger.js";
 
 const authMiddleware = (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];
@@ -9,6 +10,7 @@ const authMiddleware = (req, res, next) => {
 
   try {
     const decodedToken = verifyJWT(token);
+
     const timeNow = Date.now() / 1000;
     if (timeNow > decodedToken.exp) {
       return res.status(401).json({ status: 401, message: "Token is expired" });
