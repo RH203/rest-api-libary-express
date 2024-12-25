@@ -18,7 +18,9 @@ model Student {
   name       String       @db.VarChar(100)
   email      String       @unique @db.VarChar(255)
   password   String       @db.VarChar(100)
-  createdAt  DateTime     @default(now())
+  created_at DateTime     @default(now())
+  update_at  DateTime     @default(now()) @updatedAt
+  deteled_at DateTime?
   role       Role
   gender     Gender
   Peminjaman Peminjaman[]
@@ -32,8 +34,9 @@ model Book {
   description     String?      @db.VarChar(255)
   author          String       @db.VarChar(255)
   isbn            String?      @unique @db.VarChar(255)
-  createdAt       DateTime     @default(now())
-  updatedAt       DateTime     @updatedAt
+  created_at      DateTime     @default(now())
+  updated_at      DateTime     @default(now()) @updatedAt
+  deteled_at      DateTime?
   publisher       Publisher    @relation(fields: [publisherBookId], references: [id])
   publisherBookId Int
   genres          GenreBook[]

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: validation/admin-validation.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: validation/admin-validation.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import Joi from "joi";
+
+/**
+ * Validasi untuk menambahkan buku baru.
+ *
+ * Validasi ini memastikan bahwa data yang diterima untuk buku baru memenuhi semua persyaratan,
+ * termasuk validasi untuk id, judul, deskripsi, penulis, ISBN, ID penerbit, genre, dan stok.
+ *
+ * @constant {Object} newBookValidation
+ * @property {Object} id - ID buku yang harus berupa angka dan wajib ada
+ * @property {string} title - Judul buku yang harus berupa string dengan panjang maksimal 255 karakter dan wajib ada
+ * @property {string} description - Deskripsi buku yang bersifat opsional dan maksimal 255 karakter
+ * @property {string} author - Penulis buku yang harus berupa string dengan panjang maksimal 255 karakter dan wajib ada
+ * @property {string} isbn - ISBN buku yang harus berupa string dengan panjang maksimal 255 karakter dan wajib ada
+ * @property {number} publisherBookId - ID penerbit yang harus berupa angka dan wajib ada
+ * @property {Array&lt;number>} genres - Daftar ID genre yang harus berupa array angka dan wajib ada
+ * @property {number} stok - Jumlah stok buku yang harus berupa angka dan minimal 0
+ */
+const newBookValidation = Joi.object({
+  id: Joi.number().required(),
+  title: Joi.string().max(255).required(),
+  description: Joi.string().max(255).optional(),
+  author: Joi.string().max(255).required(),
+  isbn: Joi.string().max(255).required(),
+  publisherBookId: Joi.number().required(),
+  genres: Joi.array().items(Joi.number()).required(),
+  stok: Joi.number().min(0).required(),
+});
+
+/**
+ * Validasi untuk memperbarui buku.
+ *
+ * Validasi ini memastikan bahwa data yang diterima untuk memperbarui buku memenuhi semua persyaratan yang sama
+ * dengan validasi untuk buku baru, termasuk validasi untuk id, judul, deskripsi, penulis, ISBN, ID penerbit, genre, dan stok.
+ *
+ * @constant {Object} updateBookValidation
+ * @property {Object} id - ID buku yang harus berupa angka dan wajib ada
+ * @property {string} title - Judul buku yang harus berupa string dengan panjang maksimal 255 karakter dan wajib ada
+ * @property {string} description - Deskripsi buku yang bersifat opsional dan maksimal 255 karakter
+ * @property {string} author - Penulis buku yang harus berupa string dengan panjang maksimal 255 karakter dan wajib ada
+ * @property {string} isbn - ISBN buku yang harus berupa string dengan panjang maksimal 255 karakter dan wajib ada
+ * @property {number} publisherBookId - ID penerbit yang harus berupa angka dan wajib ada
+ * @property {Array&lt;number>} genres - Daftar ID genre yang harus berupa array angka dan wajib ada
+ * @property {number} stok - Jumlah stok buku yang harus berupa angka dan minimal 0
+ */
+const updateBookValidation = Joi.object({
+  id: Joi.number().required(),
+  title: Joi.string().max(255).required(),
+  description: Joi.string().max(255).optional(),
+  author: Joi.string().max(255).required(),
+  isbn: Joi.string().max(255).required(),
+  publisherBookId: Joi.number().required(),
+  genres: Joi.array().items(Joi.number()).required(),
+  stok: Joi.number().min(0).required(),
+});
+
+/**
+ * Validasi untuk menghapus buku berdasarkan ID.
+ *
+ * Validasi ini memastikan bahwa ID buku yang akan dihapus adalah berupa angka dan wajib ada.
+ *
+ * @constant {Object} removeBookValidationById
+ * @property {Object} id - ID buku yang akan dihapus, yang harus berupa angka dan wajib ada
+ */
+const removeBookValidationById = Joi.object({
+  id: Joi.number().required(),
+});
+export { newBookValidation, removeBookValidationById, updateBookValidation };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ResponseError.html">ResponseError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addNewBook">addNewBook</a></li><li><a href="global.html#authMiddleware">authMiddleware</a></li><li><a href="global.html#capitalizeWord">capitalizeWord</a></li><li><a href="global.html#errorMiddleware">errorMiddleware</a></li><li><a href="global.html#generateJWT">generateJWT</a></li><li><a href="global.html#getBookById">getBookById</a></li><li><a href="global.html#getBookList">getBookList</a></li><li><a href="global.html#loanBook">loanBook</a></li><li><a href="global.html#loanValidation">loanValidation</a></li><li><a href="global.html#logger">logger</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#loginUserValidation">loginUserValidation</a></li><li><a href="global.html#newBookValidation">newBookValidation</a></li><li><a href="global.html#prismaClient">prismaClient</a></li><li><a href="global.html#registrasi">registrasi</a></li><li><a href="global.html#registrationUserValidation">registrationUserValidation</a></li><li><a href="global.html#removeBook">removeBook</a></li><li><a href="global.html#removeBookValidationById">removeBookValidationById</a></li><li><a href="global.html#returnBook">returnBook</a></li><li><a href="global.html#returnValidation">returnValidation</a></li><li><a href="global.html#rolesMiddleware">rolesMiddleware</a></li><li><a href="global.html#updateBook">updateBook</a></li><li><a href="global.html#updateBookValidation">updateBookValidation</a></li><li><a href="global.html#validate">validate</a></li><li><a href="global.html#verifyJWT">verifyJWT</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Wed Dec 25 2024 21:16:57 GMT+0700 (Western Indonesia Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

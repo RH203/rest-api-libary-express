@@ -1,4 +1,32 @@
-import { ResponseError } from "../error/response-error.js";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: service/public-service.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: service/public-service.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { ResponseError } from "../error/response-error.js";
 import { prismaClient } from "../app/database.js";
 import bcrypt from "bcrypt";
 import { Role } from "@prisma/client";
@@ -26,7 +54,7 @@ import { tr } from "@faker-js/faker";
  * @function registrasi
  * @param {object} req - Request objek yang berisi data pengguna yang akan didaftarkan
  * @param {object} res - Response objek yang akan mengirimkan hasil operasi ke client
- * @returns {Promise<object>} Data pengguna yang baru saja terdaftar
+ * @returns {Promise&lt;object>} Data pengguna yang baru saja terdaftar
  * @throws {ResponseError} 400 - Jika email sudah terdaftar
  */
 const registrasi = async (req, res) => {
@@ -69,7 +97,7 @@ const registrasi = async (req, res) => {
  * @function login
  * @param {object} req - Request objek yang berisi data login pengguna
  * @param {object} res - Response objek yang akan mengirimkan hasil operasi ke client
- * @returns {Promise<string>} Token JWT untuk otentikasi pengguna
+ * @returns {Promise&lt;string>} Token JWT untuk otentikasi pengguna
  * @throws {ResponseError} 400 - Jika email atau password salah
  */
 const login = async (req, res) => {
@@ -103,7 +131,7 @@ const login = async (req, res) => {
  * @function getBookList
  * @param {object} req - Request objek yang berisi permintaan daftar buku
  * @param {object} res - Response objek yang akan mengirimkan hasil operasi ke client
- * @returns {Promise<object[]>} Daftar buku yang tersedia
+ * @returns {Promise&lt;object[]>} Daftar buku yang tersedia
  */
 const getBookList = async (req, res) => {
   const data = await prismaClient.book.findMany({
@@ -155,7 +183,7 @@ const getBookList = async (req, res) => {
  * @async
  * @function getBookById
  * @param {string} id - ID buku yang akan dicari
- * @returns {Promise<object>} Detail buku yang ditemukan
+ * @returns {Promise&lt;object>} Detail buku yang ditemukan
  * @throws {ResponseError} 400 - Jika buku tidak ditemukan atau sudah dihapus
  */
 const getBookById = async id => {
@@ -214,7 +242,7 @@ const getBookById = async id => {
  * @function loanBook
  * @param {object} req - Request objek yang berisi data peminjaman buku
  * @param {object} res - Response objek yang akan mengirimkan hasil operasi ke client
- * @returns {Promise<object>} Data peminjaman yang berhasil
+ * @returns {Promise&lt;object>} Data peminjaman yang berhasil
  * @throws {ResponseError} 400 - Jika buku sudah dipinjam atau stok buku habis
  * @throws {ResponseError} 404 - Jika buku tidak ditemukan atau sudah dihapus
  */
@@ -253,7 +281,7 @@ const loanBook = async (req, res) => {
     select: { stok: true },
   });
 
-  if (stockBook.stok <= 0) {
+  if (stockBook.stok &lt;= 0) {
     throw new ResponseError(400, "Book is out of stock.");
   }
 
@@ -293,7 +321,7 @@ const loanBook = async (req, res) => {
  * @function returnBook
  * @param {object} req - Request objek yang berisi data pengembalian buku
  * @param {object} res - Response objek yang akan mengirimkan hasil operasi ke client
- * @returns {Promise<object>} Pesan sukses pengembalian buku
+ * @returns {Promise&lt;object>} Pesan sukses pengembalian buku
  * @throws {ResponseError} 400 - Jika buku yang dikembalikan tidak pernah dipinjam
  */
 const returnBook = async (req, res) => {
@@ -306,7 +334,7 @@ const returnBook = async (req, res) => {
     },
   });
 
-  if (isBookBorrowedByStudent < 1) {
+  if (isBookBorrowedByStudent &lt; 1) {
     throw new ResponseError(400, "The user has not borrowed this book.");
   }
 
@@ -336,3 +364,26 @@ export default {
   loanBook,
   returnBook,
 };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ResponseError.html">ResponseError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addNewBook">addNewBook</a></li><li><a href="global.html#authMiddleware">authMiddleware</a></li><li><a href="global.html#capitalizeWord">capitalizeWord</a></li><li><a href="global.html#errorMiddleware">errorMiddleware</a></li><li><a href="global.html#generateJWT">generateJWT</a></li><li><a href="global.html#getBookById">getBookById</a></li><li><a href="global.html#getBookList">getBookList</a></li><li><a href="global.html#loanBook">loanBook</a></li><li><a href="global.html#loanValidation">loanValidation</a></li><li><a href="global.html#logger">logger</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#loginUserValidation">loginUserValidation</a></li><li><a href="global.html#newBookValidation">newBookValidation</a></li><li><a href="global.html#prismaClient">prismaClient</a></li><li><a href="global.html#registrasi">registrasi</a></li><li><a href="global.html#registrationUserValidation">registrationUserValidation</a></li><li><a href="global.html#removeBook">removeBook</a></li><li><a href="global.html#removeBookValidationById">removeBookValidationById</a></li><li><a href="global.html#returnBook">returnBook</a></li><li><a href="global.html#returnValidation">returnValidation</a></li><li><a href="global.html#rolesMiddleware">rolesMiddleware</a></li><li><a href="global.html#updateBook">updateBook</a></li><li><a href="global.html#updateBookValidation">updateBookValidation</a></li><li><a href="global.html#validate">validate</a></li><li><a href="global.html#verifyJWT">verifyJWT</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Wed Dec 25 2024 21:16:57 GMT+0700 (Western Indonesia Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

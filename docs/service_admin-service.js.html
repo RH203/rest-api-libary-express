@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: service/admin-service.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: service/admin-service.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { validate } from "../validation/validation.js";
+import {
+  newBookValidation,
+  removeBookValidationById,
+  updateBookValidation,
+} from "../validation/admin-validation.js";
+import { prismaClient } from "../app/database.js";
+import { ResponseError } from "../error/response-error.js";
+
+/**
+ * Menambahkan buku baru ke dalam database.
+ *
+ * Menggunakan data yang diterima melalui body request untuk membuat buku baru. Jika buku dengan judul yang sama sudah ada,
+ * maka akan mengembalikan kesalahan. Setiap genre buku akan ditambahkan ke dalam tabel penghubung antara genre dan buku.
+ *
+ * @async
+ * @function addNewBook
+ * @param {object} req - Request objek yang berisi data buku untuk ditambahkan
+ * @param {object} res - Response objek yang akan mengirimkan hasil operasi ke client
+ * @throws {ResponseError} 400 - Jika buku sudah ada
+ * @returns {string} 200 - Pesan sukses buku berhasil ditambahkan
+ */
+const addNewBook = async (req, res) => {
+  const bookData = validate(newBookValidation, req.body);
+  const existingBook = await prismaClient.book.findFirst({
+    where: { title: bookData.title },
+  });
+  if (existingBook) {
+    throw new ResponseError(400, "Book already exists!");
+  }
+  const newBook = await prismaClient.book.create({
+    data: {
+      title: bookData.title,
+      description: bookData.description,
+      author: bookData.author,
+      isbn: bookData.isbn,
+      stok: bookData.stok,
+      publisherBookId: bookData.publisherBookId,
+    },
+  });
+  for (let i = 0; i &lt; bookData.genres.length; i++) {
+    const genreId = bookData.genres[i];
+    await prismaClient.genreBook.create({
+      data: { genreId: genreId, bookId: newBook.id },
+    });
+  }
+
+  return "Book created successfully!";
+};
+
+/**
+ * Memperbarui data buku yang sudah ada di database.
+ *
+ * Menggunakan data yang diterima melalui body request untuk memperbarui buku yang sudah ada. Jika buku dengan judul yang sama
+ * sudah ada, maka akan mengembalikan kesalahan. Genre buku yang lama akan dihapus dan genre baru akan ditambahkan.
+ *
+ * @async
+ * @function updateBook
+ * @param {object} req - Request objek yang berisi data buku yang akan diperbarui
+ * @param {object} res - Response objek yang akan mengirimkan hasil operasi ke client
+ * @throws {ResponseError} 400 - Jika buku sudah ada
+ * @returns {string} 200 - Pesan sukses buku berhasil diperbarui
+ */
+const updateBook = async (req, res) => {
+  const data = validate(updateBookValidation, req.body);
+
+  const existingBook = await prismaClient.book.findFirst({
+    where: { title: data.title },
+  });
+
+  if (existingBook) {
+    throw new ResponseError(400, "Book already exists!");
+  }
+  const updatedBook = await prismaClient.book.update({
+    where: { id: data.id },
+    data: {
+      title: data.title,
+      description: data.description,
+      author: data.author,
+      isbn: data.isbn,
+      stok: data.stok,
+      publisherBookId: data.publisherBookId,
+    },
+  });
+
+  await prismaClient.genreBook.deleteMany({
+    where: { bookId: updatedBook.id },
+  });
+
+  for (let i = 0; i &lt; data.genres.length; i++) {
+    const genreId = data.genres[i];
+    await prismaClient.genreBook.create({
+      data: { genreId: genreId, bookId: updatedBook.id },
+    });
+  }
+
+  return "Book updated successfully!";
+};
+
+/**
+ * Menghapus buku dari database.
+ *
+ * Menggunakan data yang diterima melalui body request untuk menghapus buku berdasarkan ID. Jika buku tidak ditemukan,
+ * maka akan mengembalikan kesalahan. Data waktu terakhir diperbarui akan disertakan saat penghapusan.
+ *
+ * @async
+ * @function removeBook
+ * @param {object} req - Request objek yang berisi ID buku yang akan dihapus
+ * @param {object} res - Response objek yang akan mengirimkan hasil operasi ke client
+ * @throws {ResponseError} 404 - Jika buku tidak ditemukan
+ * @returns {string} 200 - Pesan sukses buku berhasil dihapus
+ */
+const removeBook = async (req, res) => {
+  const data = validate(removeBookValidationById, req.body);
+
+  const isBookExist = await prismaClient.book.findFirst({
+    where: { id: data.id },
+  });
+
+  if (!isBookExist) {
+    throw new ResponseError(404, `Book doesn't exist`);
+  }
+
+  const currentDate = new Date.now();
+  const convertDate = currentDate.toISOString().slice(0, 19).replace("T", " ");
+
+  const deleteBook = await prismaClient.book.update({
+    where: { id: data.id },
+    data: {
+      updated_at: convertDate,
+    },
+  });
+
+  return "Delete successfully";
+};
+
+// Edit user
+// See all user
+// Remove user
+
+// Add new Publisher
+// Add new Genre
+
+export default {
+  addNewBook,
+  removeBook,
+  updateBook,
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ResponseError.html">ResponseError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addNewBook">addNewBook</a></li><li><a href="global.html#authMiddleware">authMiddleware</a></li><li><a href="global.html#capitalizeWord">capitalizeWord</a></li><li><a href="global.html#errorMiddleware">errorMiddleware</a></li><li><a href="global.html#generateJWT">generateJWT</a></li><li><a href="global.html#getBookById">getBookById</a></li><li><a href="global.html#getBookList">getBookList</a></li><li><a href="global.html#loanBook">loanBook</a></li><li><a href="global.html#loanValidation">loanValidation</a></li><li><a href="global.html#logger">logger</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#loginUserValidation">loginUserValidation</a></li><li><a href="global.html#newBookValidation">newBookValidation</a></li><li><a href="global.html#prismaClient">prismaClient</a></li><li><a href="global.html#registrasi">registrasi</a></li><li><a href="global.html#registrationUserValidation">registrationUserValidation</a></li><li><a href="global.html#removeBook">removeBook</a></li><li><a href="global.html#removeBookValidationById">removeBookValidationById</a></li><li><a href="global.html#returnBook">returnBook</a></li><li><a href="global.html#returnValidation">returnValidation</a></li><li><a href="global.html#rolesMiddleware">rolesMiddleware</a></li><li><a href="global.html#updateBook">updateBook</a></li><li><a href="global.html#updateBookValidation">updateBookValidation</a></li><li><a href="global.html#validate">validate</a></li><li><a href="global.html#verifyJWT">verifyJWT</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Wed Dec 25 2024 21:16:57 GMT+0700 (Western Indonesia Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
