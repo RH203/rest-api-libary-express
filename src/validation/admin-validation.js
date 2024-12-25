@@ -17,7 +17,6 @@ import Joi from "joi";
  * @property {number} stok - Jumlah stok buku yang harus berupa angka dan minimal 0
  */
 const newBookValidation = Joi.object({
-  id: Joi.number().required(),
   title: Joi.string().max(255).required(),
   description: Joi.string().max(255).optional(),
   author: Joi.string().max(255).required(),
