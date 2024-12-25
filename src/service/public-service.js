@@ -14,6 +14,7 @@ import {
   returnValidation,
 } from "../validation/loan-validation.js";
 import { tr } from "@faker-js/faker";
+import {logger} from "../app/logger.js";
 
 /**
  * Registrasi pengguna baru
@@ -114,7 +115,7 @@ const getBookList = async (req, res) => {
       description: true,
       isbn: true,
       stok: true,
-      deteled_at: true,
+      deleted_at: true,
       genres: {
         select: {
           genre: {
@@ -130,10 +131,12 @@ const getBookList = async (req, res) => {
         },
       },
     },
+    where: {
+      deleted_at: null,
+    }
   });
 
   return data
-    .filter(book => book.deteled_at === null)
     .map(book => ({
       id: book.id,
       title: book.title,
@@ -221,9 +224,11 @@ const getBookById = async id => {
 const loanBook = async (req, res) => {
   const data = validate(loanValidation, req.body);
 
+  logger.info(req.body)
+
   const checkBookAlreadyDeleted = await prismaClient.book.findFirst({
     where: {
-      book_id: data.book_id,
+      id: data.book_id,
     },
   });
 
@@ -260,8 +265,8 @@ const loanBook = async (req, res) => {
   const [loan, updateStock] = await prismaClient.$transaction([
     prismaClient.peminjaman.create({
       data: {
-        borrow_date: new Date(),
-        return_date: new Date(),
+        borrow_at: new Date(),
+        update_at: new Date(),
         student_id: data.student_id,
         book_id: data.book_id,
         notes: data.notes,
@@ -315,13 +320,16 @@ const returnBook = async (req, res) => {
       where: { id: data.book_id },
       data: { stok: { increment: 1 } },
     }),
-    prismaClient.peminjaman.delete({
+    prismaClient.peminjaman.update({
       where: {
         student_id_book_id: {
           student_id: data.student_id,
           book_id: data.book_id,
         },
       },
+      data: {
+        return_at: new Date(),
+      }
     }),
   ]);
 
