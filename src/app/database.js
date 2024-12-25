@@ -102,3 +102,7 @@ prismaClient.$on("info", e => {
 prismaClient.$on("warn", e => {
   logger.warn(e);
 });
+
+prismaClient.$on("query", e => {
+  logger.info(e);
+});
