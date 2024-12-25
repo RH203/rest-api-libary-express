@@ -1,6 +1,7 @@
 import express from "express";
 import { rolesMiddleware } from "../middleware/roles-middleware.js";
 import adminController from "../controller/admin-controller.js";
+import {authMiddleware} from "../middleware/auth-middleware.js";
 
 const adminApi = new express.Router();
 
@@ -23,9 +24,17 @@ const adminApi = new express.Router();
  * @returns {object} 403 - Peran tidak sesuai (harus Admin)
  */
 adminApi.post(
-  "api/admin/new-book",
-  rolesMiddleware,
+  "/api/admin/new-book",
+  [authMiddleware, rolesMiddleware],
   adminController.addNewBook,
 );
+
+adminApi.post(
+  "/api/admin/remove-book",
+  [authMiddleware, rolesMiddleware],
+  adminController.removeBook,
+)
+
+
 
 export { adminApi };
