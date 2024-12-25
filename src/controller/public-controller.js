@@ -94,6 +94,7 @@ const getBookList = async (req, res, next) => {
 const getBookById = async (req, res, next) => {
   try {
     const id = req.params.id;
+
     if (!id) {
       res.status(404).json({
         status: 404,
