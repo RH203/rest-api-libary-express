@@ -20,12 +20,30 @@ const addNewBook = async (req, res, next) => {
   try {
     const result = await adminService.addNewBook(req);
 
-    res.status(200).json(result);
+    res.status(200).json({
+      status: 200,
+      data: result
+    });
   } catch (error) {
     next(error);
   }
 };
 
+const removeBook = async (req, res, next) => {
+  try {
+    const result = adminService.removeBook(req)
+
+    res.status(200).json({
+      status: 200,
+      data: result
+    })
+  } catch (error) {
+    next(error);
+  }
+
+}
+
 export default {
   addNewBook,
+  removeBook
 };
