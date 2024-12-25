@@ -6,6 +6,7 @@ import {
 } from "../validation/admin-validation.js";
 import { prismaClient } from "../app/database.js";
 import { ResponseError } from "../error/response-error.js";
+import {logger} from "../app/logger.js";
 
 /**
  * Menambahkan buku baru ke dalam database.
@@ -38,12 +39,15 @@ const addNewBook = async (req, res) => {
       publisherBookId: bookData.publisherBookId,
     },
   });
-  for (let i = 0; i < bookData.genres.length; i++) {
-    const genreId = bookData.genres[i];
-    await prismaClient.genreBook.create({
-      data: { genreId: genreId, bookId: newBook.id },
-    });
-  }
+
+  const genreData = bookData.genres.map(genreId => ({
+    genreId: genreId,
+    bookId: newBook.id,
+  }))
+
+  await prismaClient.genreBook.createMany({
+    data: genreData
+  })
 
   return "Book created successfully!";
 };
@@ -87,12 +91,14 @@ const updateBook = async (req, res) => {
     where: { bookId: updatedBook.id },
   });
 
-  for (let i = 0; i < data.genres.length; i++) {
-    const genreId = data.genres[i];
-    await prismaClient.genreBook.create({
-      data: { genreId: genreId, bookId: updatedBook.id },
-    });
-  }
+  const genreData = data.genres.map(genreId => ({
+    genreId: genreId,
+    bookId: data.id
+  }))
+
+  await prismaClient.genreBook.createMany({
+    data: genreData
+  })
 
   return "Book updated successfully!";
 };
@@ -113,6 +119,8 @@ const updateBook = async (req, res) => {
 const removeBook = async (req, res) => {
   const data = validate(removeBookValidationById, req.body);
 
+  logger.info(data)
+
   const isBookExist = await prismaClient.book.findFirst({
     where: { id: data.id },
   });
@@ -121,13 +129,10 @@ const removeBook = async (req, res) => {
     throw new ResponseError(404, `Book doesn't exist`);
   }
 
-  const currentDate = new Date.now();
-  const convertDate = currentDate.toISOString().slice(0, 19).replace("T", " ");
-
   const deleteBook = await prismaClient.book.update({
     where: { id: data.id },
     data: {
-      updated_at: convertDate,
+      deleted_at: new Date(),
     },
   });
 
