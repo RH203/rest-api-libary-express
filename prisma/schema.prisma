@@ -21,6 +21,7 @@ model Student {
   created_at DateTime     @default(now())
   update_at  DateTime     @default(now()) @updatedAt
   deteled_at DateTime?
+  ban_status Boolean      @default(false)
   role       Role
   gender     Gender
   Peminjaman Peminjaman[]
