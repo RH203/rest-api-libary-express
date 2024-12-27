@@ -13,7 +13,6 @@ const limiter = rateLimit({
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
 });
 
-
 /**
  * Middleware untuk menangani request JSON dan melakukan rate limiting.
  *
