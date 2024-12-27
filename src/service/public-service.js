@@ -14,7 +14,7 @@ import {
   returnValidation,
 } from "../validation/loan-validation.js";
 import { tr } from "@faker-js/faker";
-import {logger} from "../app/logger.js";
+import { logger } from "../app/logger.js";
 
 /**
  * Registrasi pengguna baru
@@ -55,9 +55,11 @@ const registrasi = async (req, res) => {
     },
   });
 
-  return prismaClient.student.findFirst({
-    where: { id: result.id },
-  });
+  if (result) {
+    throw new ResponseError(400, "Failed create account");
+  }
+
+  return "Account created successfully!";
 };
 
 /**
@@ -78,11 +80,22 @@ const login = async (req, res) => {
 
   const account = await prismaClient.student.findFirst({
     where: { email: data.email },
-    select: { name: true, email: true, password: true, role: true },
+    select: {
+      name: true,
+      email: true,
+      password: true,
+      role: true,
+      ban_status: true,
+    },
   });
-
   if (!account) {
     throw new ResponseError(400, "Email or password is wrong!");
+  }
+  if (account.ban_status) {
+    throw new ResponseError(
+      404,
+      "Account banned, for more information call CS.",
+    );
   }
 
   const isPasswordSame = await bcrypt.compare(data.password, account.password);
@@ -133,20 +146,19 @@ const getBookList = async (req, res) => {
     },
     where: {
       deleted_at: null,
-    }
+    },
   });
 
-  return data
-    .map(book => ({
-      id: book.id,
-      title: book.title,
-      author: book.author,
-      description: book.description,
-      isbn: book.isbn,
-      stok: book.stok,
-      genres: book.genres.map(genre => genre.genre.name),
-      publisher: book.publisher?.name || "Unknown",
-    }));
+  return data.map(book => ({
+    id: book.id,
+    title: book.title,
+    author: book.author,
+    description: book.description,
+    isbn: book.isbn,
+    stok: book.stok,
+    genres: book.genres.map(genre => genre.genre.name),
+    publisher: book.publisher?.name || "Unknown",
+  }));
 };
 
 /**
@@ -224,7 +236,7 @@ const getBookById = async id => {
 const loanBook = async (req, res) => {
   const data = validate(loanValidation, req.body);
 
-  logger.info(req.body)
+  logger.info(req.body);
 
   const checkBookAlreadyDeleted = await prismaClient.book.findFirst({
     where: {
@@ -329,7 +341,7 @@ const returnBook = async (req, res) => {
       },
       data: {
         return_at: new Date(),
-      }
+      },
     }),
   ]);
 

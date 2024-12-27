@@ -1,4 +1,5 @@
 import adminService from "../service/admin-service.js";
+import { logger } from "../app/logger.js";
 
 /**
  * Menambahkan buku baru melalui layanan admin.
@@ -22,7 +23,7 @@ const addNewBook = async (req, res, next) => {
 
     res.status(200).json({
       status: 200,
-      data: result
+      data: result,
     });
   } catch (error) {
     next(error);
@@ -31,19 +32,40 @@ const addNewBook = async (req, res, next) => {
 
 const removeBook = async (req, res, next) => {
   try {
-    const result = adminService.removeBook(req)
+    const result = await adminService.removeBook(req);
 
     res.status(200).json({
       status: 200,
-      data: result
-    })
+      data: result,
+    });
   } catch (error) {
     next(error);
   }
+};
 
-}
+const updateBook = async (req, res, next) => {
+  try {
+    const result = await adminService.updateBook(req);
+
+    logger.info(result);
+
+    if (!result) {
+      res.status(404).json({
+        status: 404,
+        message: "Not Found",
+      });
+    }
+    res.status(200).json({
+      status: 200,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 export default {
   addNewBook,
-  removeBook
+  removeBook,
+  updateBook,
 };

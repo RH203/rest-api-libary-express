@@ -6,7 +6,6 @@ import {
 } from "../validation/admin-validation.js";
 import { prismaClient } from "../app/database.js";
 import { ResponseError } from "../error/response-error.js";
-import {logger} from "../app/logger.js";
 
 /**
  * Menambahkan buku baru ke dalam database.
@@ -43,11 +42,11 @@ const addNewBook = async (req, res) => {
   const genreData = bookData.genres.map(genreId => ({
     genreId: genreId,
     bookId: newBook.id,
-  }))
+  }));
 
   await prismaClient.genreBook.createMany({
-    data: genreData
-  })
+    data: genreData,
+  });
 
   return "Book created successfully!";
 };
@@ -72,8 +71,8 @@ const updateBook = async (req, res) => {
     where: { title: data.title },
   });
 
-  if (existingBook) {
-    throw new ResponseError(400, "Book already exists!");
+  if (!existingBook) {
+    throw new ResponseError(400, "Book doesn't exists!");
   }
   const updatedBook = await prismaClient.book.update({
     where: { id: data.id },
@@ -93,12 +92,12 @@ const updateBook = async (req, res) => {
 
   const genreData = data.genres.map(genreId => ({
     genreId: genreId,
-    bookId: data.id
-  }))
+    bookId: data.id,
+  }));
 
   await prismaClient.genreBook.createMany({
-    data: genreData
-  })
+    data: genreData,
+  });
 
   return "Book updated successfully!";
 };
@@ -118,8 +117,6 @@ const updateBook = async (req, res) => {
  */
 const removeBook = async (req, res) => {
   const data = validate(removeBookValidationById, req.body);
-
-  logger.info(data)
 
   const isBookExist = await prismaClient.book.findFirst({
     where: { id: data.id },
