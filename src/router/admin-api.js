@@ -1,7 +1,7 @@
 import express from "express";
 import { rolesMiddleware } from "../middleware/roles-middleware.js";
 import adminController from "../controller/admin-controller.js";
-import {authMiddleware} from "../middleware/auth-middleware.js";
+import { authMiddleware } from "../middleware/auth-middleware.js";
 
 const adminApi = new express.Router();
 
@@ -33,8 +33,12 @@ adminApi.post(
   "/api/admin/remove-book",
   [authMiddleware, rolesMiddleware],
   adminController.removeBook,
-)
+);
 
-
+adminApi.post(
+  "/api/admin/update-book",
+  [authMiddleware, rolesMiddleware],
+  adminController.updateBook,
+);
 
 export { adminApi };
