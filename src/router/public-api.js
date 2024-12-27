@@ -89,7 +89,6 @@ publicApi.get("/api/book/:id", authMiddleware, publicController.getBookById);
  */
 publicApi.post("/api/book/borrow", authMiddleware, publicController.loanBook);
 
-
 /**
  * Route untuk mengembalikan buku.
  *
