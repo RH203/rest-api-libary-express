@@ -1,6602 +1,3189 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>JSDoc: Global</title>
 
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
-</head>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="styles/prettify-tomorrow.css"
+    />
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css" />
+  </head>
 
-<body>
+  <body>
+    <div id="main">
+      <h1 class="page-title">Global</h1>
 
-<div id="main">
+      <section>
+        <header>
+          <h2></h2>
+        </header>
 
-    <h1 class="page-title">Global</h1>
+        <article>
+          <div class="container-overview">
+            <dl class="details"></dl>
+          </div>
 
-    
+          <h3 class="subsection-title">Members</h3>
 
+          <h4 class="name" id="loanValidation">
+            <span class="type-signature">(constant) </span>loanValidation<span
+              class="type-signature"
+            >
+              :Object</span
+            >
+          </h4>
 
+          <div class="description">
+            Validasi untuk peminjaman buku. Validasi ini memastikan bahwa data
+            yang diterima untuk proses peminjaman buku sesuai dengan format yang
+            benar.
+          </div>
 
+          <h5>Type:</h5>
+          <ul>
+            <li>
+              <span class="param-type">Object</span>
+            </li>
+          </ul>
 
-<section>
+          <h5 class="subsection-title">Properties:</h5>
 
-<header>
-    
-        <h2></h2>
-        
-    
-</header>
+          <table class="props">
+            <thead>
+              <tr>
+                <th>Name</th>
 
-<article>
-    <div class="container-overview">
-    
-        
+                <th>Type</th>
 
-        
+                <th class="last">Description</th>
+              </tr>
+            </thead>
 
+            <tbody>
+              <tr>
+                <td class="name"><code>student_id</code></td>
 
-<dl class="details">
+                <td class="type">
+                  <span class="param-type">number</span>
+                </td>
 
-    
+                <td class="description last">
+                  ID mahasiswa yang meminjam buku, wajib ada dan harus berupa
+                  angka
+                </td>
+              </tr>
 
-    
+              <tr>
+                <td class="name"><code>book_id</code></td>
 
-    
+                <td class="type">
+                  <span class="param-type">number</span>
+                </td>
 
-    
+                <td class="description last">
+                  ID buku yang akan dipinjam, wajib ada dan harus berupa angka
+                </td>
+              </tr>
 
-    
+              <tr>
+                <td class="name"><code>notes</code></td>
 
-    
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
 
-    
+                <td class="description last">
+                  Catatan peminjaman buku yang bersifat opsional, panjang
+                  maksimal 100 karakter dan bisa kosong
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-    
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="validation_loan-validation.js.html"
+                    >validation/loan-validation.js</a
+                  >,
+                  <a href="validation_loan-validation.js.html#line3">line 3</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
 
-    
+          <h4 class="name" id="logger">
+            <span class="type-signature">(constant) </span>logger<span
+              class="type-signature"
+            >
+              :winston.Logger</span
+            >
+          </h4>
 
-    
+          <div class="description">
+            Logger instance yang dikonfigurasi menggunakan Winston. Konfigurasi:
+            - Level log: `info` - Format: JSON dengan indentasi 1 spasi -
+            Transport: Output ke konsol Penggunaan: - Gunakan metode seperti
+            `logger.info`, `logger.error`, atau `logger.warn` untuk mencatat log
+            dengan level yang sesuai.
+          </div>
 
-    
+          <h5>Type:</h5>
+          <ul>
+            <li>
+              <span class="param-type">winston.Logger</span>
+            </li>
+          </ul>
 
-    
+          <h5 class="subsection-title">Properties:</h5>
 
-    
+          <table class="props">
+            <thead>
+              <tr>
+                <th>Name</th>
 
-    
+                <th>Type</th>
 
-    
+                <th class="last">Description</th>
+              </tr>
+            </thead>
 
-    
-</dl>
+            <tbody>
+              <tr>
+                <td class="name"><code>level</code></td>
 
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
 
-        
-    
+                <td class="description last">
+                  Level logging default untuk logger ini (default: "info").
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>format</code></td>
+
+                <td class="type">
+                  <span class="param-type">winston.Logform.Format</span>
+                </td>
+
+                <td class="description last">
+                  Format logging yang digunakan (default: JSON dengan indentasi
+                  1 spasi).
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>transports</code></td>
+
+                <td class="type">
+                  <span class="param-type">Array.&lt;winston.transport></span>
+                </td>
+
+                <td class="description last">
+                  Transportasi logging yang digunakan (default: Console
+                  transport).
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="app_logger.js.html">app/logger.js</a>,
+                  <a href="app_logger.js.html#line20">line 20</a>
+                </li>
+              </ul>
+            </dd>
+
+            <dt class="tag-see">See:</dt>
+            <dd class="tag-see">
+              <ul>
+                <li>
+                  <a href="https://github.com/winstonjs/winston"
+                    >https://github.com/winstonjs/winston</a
+                  >
+                  Dokumentasi resmi Winston
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="loginUserValidation">
+            <span class="type-signature">(constant) </span
+            >loginUserValidation<span class="type-signature"> :Object</span>
+          </h4>
+
+          <div class="description">
+            Validasi untuk login pengguna. Validasi ini memastikan bahwa data
+            yang diterima untuk proses login pengguna sesuai dengan format yang
+            benar.
+          </div>
+
+          <h5>Type:</h5>
+          <ul>
+            <li>
+              <span class="param-type">Object</span>
+            </li>
+          </ul>
+
+          <h5 class="subsection-title">Properties:</h5>
+
+          <table class="props">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>email</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="description last">
+                  Alamat email pengguna, wajib ada dan harus berupa email yang
+                  valid
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>password</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="description last">
+                  Kata sandi pengguna, wajib ada dan tidak dibatasi panjangnya
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="validation_user-validation.js.html"
+                    >validation/user-validation.js</a
+                  >,
+                  <a href="validation_user-validation.js.html#line21"
+                    >line 21</a
+                  >
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="newBookValidation">
+            <span class="type-signature">(constant) </span
+            >newBookValidation<span class="type-signature"> :Object</span>
+          </h4>
+
+          <div class="description">
+            Validasi untuk menambahkan buku baru. Validasi ini memastikan bahwa
+            data yang diterima untuk buku baru memenuhi semua persyaratan,
+            termasuk validasi untuk id, judul, deskripsi, penulis, ISBN, ID
+            penerbit, genre, dan stok.
+          </div>
+
+          <h5>Type:</h5>
+          <ul>
+            <li>
+              <span class="param-type">Object</span>
+            </li>
+          </ul>
+
+          <h5 class="subsection-title">Properties:</h5>
+
+          <table class="props">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>id</code></td>
+
+                <td class="type">
+                  <span class="param-type">Object</span>
+                </td>
+
+                <td class="description last">
+                  ID buku yang harus berupa angka dan wajib ada
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>title</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="description last">
+                  Judul buku yang harus berupa string dengan panjang maksimal
+                  255 karakter dan wajib ada
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>description</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="description last">
+                  Deskripsi buku yang bersifat opsional dan maksimal 255
+                  karakter
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>author</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="description last">
+                  Penulis buku yang harus berupa string dengan panjang maksimal
+                  255 karakter dan wajib ada
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>isbn</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="description last">
+                  ISBN buku yang harus berupa string dengan panjang maksimal 255
+                  karakter dan wajib ada
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>publisherBookId</code></td>
+
+                <td class="type">
+                  <span class="param-type">number</span>
+                </td>
+
+                <td class="description last">
+                  ID penerbit yang harus berupa angka dan wajib ada
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>genres</code></td>
+
+                <td class="type">
+                  <span class="param-type">Array.&lt;number></span>
+                </td>
+
+                <td class="description last">
+                  Daftar ID genre yang harus berupa array angka dan wajib ada
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>stok</code></td>
+
+                <td class="type">
+                  <span class="param-type">number</span>
+                </td>
+
+                <td class="description last">
+                  Jumlah stok buku yang harus berupa angka dan minimal 0
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="validation_admin-validation.js.html"
+                    >validation/admin-validation.js</a
+                  >,
+                  <a href="validation_admin-validation.js.html#line3">line 3</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="prismaClient">
+            <span class="type-signature">(constant) </span>prismaClient<span
+              class="type-signature"
+            ></span>
+          </h4>
+
+          <div class="description">
+            Instance PrismaClient yang dikonfigurasi untuk logging. Konfigurasi
+            logging: - query: Log untuk semua query yang dijalankan. - error:
+            Log untuk semua error yang terjadi. - info: Log untuk informasi
+            tambahan. - warn: Log untuk peringatan. Event handler: - `error`:
+            Log error menggunakan logger. - `info`: Log informasi menggunakan
+            logger. - `warn`: Log peringatan menggunakan logger.
+          </div>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="app_database.js.html">app/database.js</a>,
+                  <a href="app_database.js.html#line52">line 52</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="registrationUserValidation">
+            <span class="type-signature">(constant) </span
+            >registrationUserValidation<span class="type-signature">
+              :Object</span
+            >
+          </h4>
+
+          <div class="description">
+            Validasi untuk registrasi pengguna baru. Validasi ini memastikan
+            bahwa data yang diterima untuk proses registrasi pengguna baru
+            sesuai dengan format yang benar.
+          </div>
+
+          <h5>Type:</h5>
+          <ul>
+            <li>
+              <span class="param-type">Object</span>
+            </li>
+          </ul>
+
+          <h5 class="subsection-title">Properties:</h5>
+
+          <table class="props">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>name</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="description last">
+                  Nama pengguna, wajib ada dan memiliki panjang maksimal 100
+                  karakter
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>email</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="description last">
+                  Alamat email pengguna, wajib ada dan harus berupa email yang
+                  valid
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>password</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="description last">
+                  Kata sandi pengguna, wajib ada dan tidak dibatasi panjangnya
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>gender</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="description last">
+                  Jenis kelamin pengguna, wajib ada dan hanya boleh bernilai
+                  "Male" atau "Female"
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="validation_user-validation.js.html"
+                    >validation/user-validation.js</a
+                  >,
+                  <a href="validation_user-validation.js.html#line3">line 3</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="removeBookValidationById">
+            <span class="type-signature">(constant) </span
+            >removeBookValidationById<span class="type-signature">
+              :Object</span
+            >
+          </h4>
+
+          <div class="description">
+            Validasi untuk menghapus buku berdasarkan ID. Validasi ini
+            memastikan bahwa ID buku yang akan dihapus adalah berupa angka dan
+            wajib ada.
+          </div>
+
+          <h5>Type:</h5>
+          <ul>
+            <li>
+              <span class="param-type">Object</span>
+            </li>
+          </ul>
+
+          <h5 class="subsection-title">Properties:</h5>
+
+          <table class="props">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>id</code></td>
+
+                <td class="type">
+                  <span class="param-type">Object</span>
+                </td>
+
+                <td class="description last">
+                  ID buku yang akan dihapus, yang harus berupa angka dan wajib
+                  ada
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="validation_admin-validation.js.html"
+                    >validation/admin-validation.js</a
+                  >,
+                  <a href="validation_admin-validation.js.html#line57"
+                    >line 57</a
+                  >
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="returnValidation">
+            <span class="type-signature">(constant) </span>returnValidation<span
+              class="type-signature"
+            >
+              :Object</span
+            >
+          </h4>
+
+          <div class="description">
+            Validasi untuk pengembalian buku. Validasi ini memastikan bahwa data
+            yang diterima untuk proses pengembalian buku sesuai dengan format
+            yang benar.
+          </div>
+
+          <h5>Type:</h5>
+          <ul>
+            <li>
+              <span class="param-type">Object</span>
+            </li>
+          </ul>
+
+          <h5 class="subsection-title">Properties:</h5>
+
+          <table class="props">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>student_id</code></td>
+
+                <td class="type">
+                  <span class="param-type">number</span>
+                </td>
+
+                <td class="description last">
+                  ID mahasiswa yang mengembalikan buku, wajib ada dan harus
+                  berupa angka
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>book_id</code></td>
+
+                <td class="type">
+                  <span class="param-type">number</span>
+                </td>
+
+                <td class="description last">
+                  ID buku yang akan dikembalikan, wajib ada dan harus berupa
+                  angka
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="validation_loan-validation.js.html"
+                    >validation/loan-validation.js</a
+                  >,
+                  <a href="validation_loan-validation.js.html#line19"
+                    >line 19</a
+                  >
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="updateBookValidation">
+            <span class="type-signature">(constant) </span
+            >updateBookValidation<span class="type-signature"> :Object</span>
+          </h4>
+
+          <div class="description">
+            Validasi untuk memperbarui buku. Validasi ini memastikan bahwa data
+            yang diterima untuk memperbarui buku memenuhi semua persyaratan yang
+            sama dengan validasi untuk buku baru, termasuk validasi untuk id,
+            judul, deskripsi, penulis, ISBN, ID penerbit, genre, dan stok.
+          </div>
+
+          <h5>Type:</h5>
+          <ul>
+            <li>
+              <span class="param-type">Object</span>
+            </li>
+          </ul>
+
+          <h5 class="subsection-title">Properties:</h5>
+
+          <table class="props">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>id</code></td>
+
+                <td class="type">
+                  <span class="param-type">Object</span>
+                </td>
+
+                <td class="description last">
+                  ID buku yang harus berupa angka dan wajib ada
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>title</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="description last">
+                  Judul buku yang harus berupa string dengan panjang maksimal
+                  255 karakter dan wajib ada
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>description</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="description last">
+                  Deskripsi buku yang bersifat opsional dan maksimal 255
+                  karakter
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>author</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="description last">
+                  Penulis buku yang harus berupa string dengan panjang maksimal
+                  255 karakter dan wajib ada
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>isbn</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="description last">
+                  ISBN buku yang harus berupa string dengan panjang maksimal 255
+                  karakter dan wajib ada
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>publisherBookId</code></td>
+
+                <td class="type">
+                  <span class="param-type">number</span>
+                </td>
+
+                <td class="description last">
+                  ID penerbit yang harus berupa angka dan wajib ada
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>genres</code></td>
+
+                <td class="type">
+                  <span class="param-type">Array.&lt;number></span>
+                </td>
+
+                <td class="description last">
+                  Daftar ID genre yang harus berupa array angka dan wajib ada
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>stok</code></td>
+
+                <td class="type">
+                  <span class="param-type">number</span>
+                </td>
+
+                <td class="description last">
+                  Jumlah stok buku yang harus berupa angka dan minimal 0
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="validation_admin-validation.js.html"
+                    >validation/admin-validation.js</a
+                  >,
+                  <a href="validation_admin-validation.js.html#line30"
+                    >line 30</a
+                  >
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h3 class="subsection-title">Methods</h3>
+
+          <h4 class="name" id="addNewBook">
+            <span class="type-signature">(async) </span>addNewBook<span
+              class="signature"
+              >(req, res, next)</span
+            ><span class="type-signature"> &rarr; {void}</span>
+          </h4>
+
+          <div class="description">
+            Menambahkan buku baru melalui layanan admin. Fungsi ini menerima
+            request untuk menambahkan buku baru, kemudian memanggil layanan
+            `adminService.addNewBook()` untuk memproses data buku yang dikirim
+            melalui request. Setelah itu, mengirimkan respons dengan status 200
+            dan data buku yang berhasil ditambahkan. Jika terjadi error, error
+            tersebut diteruskan ke middleware error handler.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>req</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.Request</span>
+                </td>
+
+                <td class="description last">
+                  Request objek yang berisi data buku yang akan ditambahkan.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>res</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.Response</span>
+                </td>
+
+                <td class="description last">
+                  Response objek untuk mengirimkan hasil operasi ke client.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>next</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.NextFunction</span>
+                </td>
+
+                <td class="description last">
+                  Fungsi middleware untuk meneruskan error ke handler
+                  berikutnya.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="controller_admin-controller.js.html"
+                    >controller/admin-controller.js</a
+                  >,
+                  <a href="controller_admin-controller.js.html#line19"
+                    >line 19</a
+                  >
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">
+            Mengirimkan respons JSON dengan status 200 jika berhasil, atau error
+            jika gagal.
+          </div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">void</span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="addNewBook">
+            <span class="type-signature">(async) </span>addNewBook<span
+              class="signature"
+              >(req, res)</span
+            ><span class="type-signature"> &rarr; {string}</span>
+          </h4>
+
+          <div class="description">
+            Menambahkan buku baru ke dalam database. Menggunakan data yang
+            diterima melalui body request untuk membuat buku baru. Jika buku
+            dengan judul yang sama sudah ada, maka akan mengembalikan kesalahan.
+            Setiap genre buku akan ditambahkan ke dalam tabel penghubung antara
+            genre dan buku.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>req</code></td>
+
+                <td class="type">
+                  <span class="param-type">object</span>
+                </td>
+
+                <td class="description last">
+                  Request objek yang berisi data buku untuk ditambahkan
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>res</code></td>
+
+                <td class="type">
+                  <span class="param-type">object</span>
+                </td>
+
+                <td class="description last">
+                  Response objek yang akan mengirimkan hasil operasi ke client
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="service_admin-service.js.html"
+                    >service/admin-service.js</a
+                  >, <a href="service_admin-service.js.html#line10">line 10</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Throws:</h5>
+
+          <dl>
+            <dt>
+              <div class="param-desc">400 - Jika buku sudah ada</div>
+            </dt>
+            <dd></dd>
+            <dt>
+              <dl>
+                <dt>Type</dt>
+                <dd>
+                  <span class="param-type"
+                    ><a href="ResponseError.html">ResponseError</a></span
+                  >
+                </dd>
+              </dl>
+            </dt>
+            <dd></dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">
+            200 - Pesan sukses buku berhasil ditambahkan
+          </div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">string</span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="authMiddleware">
+            <span class="type-signature"></span>authMiddleware<span
+              class="signature"
+              >(req, res, next)</span
+            ><span class="type-signature"> &rarr; {void}</span>
+          </h4>
+
+          <div class="description">
+            Middleware untuk memverifikasi token JWT pada header authorization.
+            Fungsi ini memeriksa keberadaan dan validitas token JWT yang
+            dikirimkan dalam header authorization. Jika token tidak ada, telah
+            kedaluwarsa, atau tidak valid, middleware ini akan mengembalikan
+            respons dengan status 401. Jika token valid, middleware ini akan
+            melanjutkan eksekusi ke middleware berikutnya.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>req</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.Request</span>
+                </td>
+
+                <td class="description last">
+                  Request objek yang berisi header authorization.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>res</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.Response</span>
+                </td>
+
+                <td class="description last">
+                  Response objek untuk mengirimkan hasil operasi ke client.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>next</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.NextFunction</span>
+                </td>
+
+                <td class="description last">
+                  Fungsi middleware untuk meneruskan eksekusi ke middleware
+                  berikutnya.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="middleware_auth-middleware.js.html"
+                    >middleware/auth-middleware.js</a
+                  >,
+                  <a href="middleware_auth-middleware.js.html#line18"
+                    >line 18</a
+                  >
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">
+            Mengirimkan respons JSON dengan status 401 jika token tidak valid
+            atau kedaluwarsa, atau melanjutkan ke middleware berikutnya jika
+            valid.
+          </div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">void</span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="capitalizeWord">
+            <span class="type-signature"></span>capitalizeWord<span
+              class="signature"
+              >(input)</span
+            ><span class="type-signature"> &rarr; {string}</span>
+          </h4>
+
+          <div class="description">
+            Mengubah setiap kata dalam kalimat menjadi huruf kapital di awalnya.
+            Fungsi ini menerima sebuah string, memecahnya menjadi kata-kata
+            berdasarkan spasi, kemudian mengubah huruf pertama dari setiap kata
+            menjadi kapital. Hasilnya adalah kalimat dengan setiap kata dimulai
+            dengan huruf kapital.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>input</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="description last">
+                  Kalimat atau string yang ingin diubah kapitalnya.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="helpers_string-helper.js.html"
+                    >helpers/string-helper.js</a
+                  >, <a href="helpers_string-helper.js.html#line12">line 12</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">
+            Kalimat dengan setiap kata dimulai dengan huruf kapital.
+          </div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">string</span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="errorMiddleware">
+            <span class="type-signature"></span>errorMiddleware<span
+              class="signature"
+              >(err, req, res, next)</span
+            ><span class="type-signature"> &rarr; {void}</span>
+          </h4>
+
+          <div class="description">
+            Middleware untuk menangani error dalam aplikasi. Middleware ini
+            menangani error yang dilemparkan oleh aplikasi. Jika error yang
+            dilemparkan adalah instance dari `ResponseError`, status dan pesan
+            error akan dikirimkan sesuai dengan status yang diberikan. Jika
+            error bukan `ResponseError`, akan mengembalikan respons error dengan
+            status 500 dan pesan error yang disediakan.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>err</code></td>
+
+                <td class="type">
+                  <span class="param-type">Error</span>
+                </td>
+
+                <td class="description last">
+                  Error yang terjadi selama eksekusi request.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>req</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.Request</span>
+                </td>
+
+                <td class="description last">
+                  Request objek yang berisi informasi permintaan.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>res</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.Response</span>
+                </td>
+
+                <td class="description last">
+                  Response objek untuk mengirimkan hasil operasi ke client.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>next</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.NextFunction</span>
+                </td>
+
+                <td class="description last">
+                  Fungsi untuk melanjutkan eksekusi middleware berikutnya.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="middleware_error-middleware.js.html"
+                    >middleware/error-middleware.js</a
+                  >,
+                  <a href="middleware_error-middleware.js.html#line18"
+                    >line 18</a
+                  >
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">
+            Mengirimkan respons error dalam bentuk JSON sesuai dengan status
+            error.
+          </div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">void</span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="generateJWT">
+            <span class="type-signature"></span>generateJWT<span
+              class="signature"
+              >(name, role, expiresIn<span class="signature-attributes"
+                >opt</span
+              >)</span
+            ><span class="type-signature"> &rarr; {string}</span>
+          </h4>
+
+          <div class="description">
+            Membuat JSON Web Token (JWT) untuk pengguna. Fungsi ini membuat
+            token JWT berdasarkan nama pengguna, peran, dan waktu kedaluwarsa.
+            Token ini dapat digunakan untuk autentikasi dan otorisasi dalam
+            aplikasi.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th>Attributes</th>
+
+                <th>Default</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>name</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="attributes"></td>
+
+                <td class="default"></td>
+
+                <td class="description last">
+                  Nama pengguna yang akan disematkan dalam token.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>role</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="attributes"></td>
+
+                <td class="default"></td>
+
+                <td class="description last">
+                  Peran pengguna yang akan disematkan dalam token (contoh:
+                  'admin', 'user').
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>expiresIn</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="attributes">&lt;optional><br /></td>
+
+                <td class="default">"24h"</td>
+
+                <td class="description last">
+                  Waktu kedaluwarsa token (default: "24h").
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="helpers_jwt-config.js.html">helpers/jwt-config.js</a
+                  >, <a href="helpers_jwt-config.js.html#line21">line 21</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">Token JWT yang telah dibuat.</div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">string</span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="getBookById">
+            <span class="type-signature">(async) </span>getBookById<span
+              class="signature"
+              >(req, res, next)</span
+            ><span class="type-signature"> &rarr; {void}</span>
+          </h4>
+
+          <div class="description">
+            Controller untuk mendapatkan buku berdasarkan ID. Fungsi ini
+            mengambil ID buku dari parameter request, memanggil
+            `publicService.getBookById()` untuk mendapatkan buku berdasarkan ID.
+            Jika buku ditemukan, mengirimkan respons dengan status 200 dan data
+            buku. Jika tidak ditemukan, mengirimkan respons dengan status 404.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>req</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.Request</span>
+                </td>
+
+                <td class="description last">
+                  Request objek yang berisi parameter ID buku.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>res</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.Response</span>
+                </td>
+
+                <td class="description last">
+                  Response objek untuk mengirimkan hasil operasi ke client.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>next</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.NextFunction</span>
+                </td>
+
+                <td class="description last">
+                  Fungsi middleware untuk meneruskan error ke handler
+                  berikutnya.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="controller_public-controller.js.html"
+                    >controller/public-controller.js</a
+                  >,
+                  <a href="controller_public-controller.js.html#line94"
+                    >line 94</a
+                  >
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">
+            Mengirimkan respons JSON dengan status 200 dan data buku jika
+            berhasil, atau 404 jika tidak ditemukan.
+          </div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">void</span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="getBookById">
+            <span class="type-signature">(async) </span>getBookById<span
+              class="signature"
+              >(id)</span
+            ><span class="type-signature"> &rarr; {Promise.&lt;object>}</span>
+          </h4>
+
+          <div class="description">
+            Mendapatkan detail buku berdasarkan ID Fungsi untuk mengambil data
+            detail buku berdasarkan ID. Jika buku tidak ditemukan atau sudah
+            dihapus, maka akan mengembalikan pesan kesalahan.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>id</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="description last">ID buku yang akan dicari</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="service_public-service.js.html"
+                    >service/public-service.js</a
+                  >,
+                  <a href="service_public-service.js.html#line149">line 149</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Throws:</h5>
+
+          <dl>
+            <dt>
+              <div class="param-desc">
+                400 - Jika buku tidak ditemukan atau sudah dihapus
+              </div>
+            </dt>
+            <dd></dd>
+            <dt>
+              <dl>
+                <dt>Type</dt>
+                <dd>
+                  <span class="param-type"
+                    ><a href="ResponseError.html">ResponseError</a></span
+                  >
+                </dd>
+              </dl>
+            </dt>
+            <dd></dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">Detail buku yang ditemukan</div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">Promise.&lt;object></span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="getBookList">
+            <span class="type-signature">(async) </span>getBookList<span
+              class="signature"
+              >(req, res, next)</span
+            ><span class="type-signature"> &rarr; {void}</span>
+          </h4>
+
+          <div class="description">
+            Controller untuk mendapatkan daftar buku. Fungsi ini memanggil
+            `publicService.getBookList()` untuk mendapatkan semua buku yang
+            tersedia. Setelah berhasil, mengirimkan respons dengan status 200
+            dan daftar buku.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>req</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.Request</span>
+                </td>
+
+                <td class="description last">
+                  Request objek yang diterima dari client.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>res</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.Response</span>
+                </td>
+
+                <td class="description last">
+                  Response objek untuk mengirimkan hasil operasi ke client.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>next</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.NextFunction</span>
+                </td>
+
+                <td class="description last">
+                  Fungsi middleware untuk meneruskan error ke handler
+                  berikutnya.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="controller_public-controller.js.html"
+                    >controller/public-controller.js</a
+                  >,
+                  <a href="controller_public-controller.js.html#line67"
+                    >line 67</a
+                  >
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">
+            Mengirimkan respons JSON dengan status 200 dan data buku jika
+            berhasil, atau error jika gagal.
+          </div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">void</span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="getBookList">
+            <span class="type-signature">(async) </span>getBookList<span
+              class="signature"
+              >(req, res)</span
+            ><span class="type-signature">
+              &rarr; {Promise.&lt;Array.&lt;object>>}</span
+            >
+          </h4>
+
+          <div class="description">
+            Mendapatkan daftar buku Fungsi untuk mengambil semua daftar buku
+            yang tersedia. Buku yang sudah dihapus akan diabaikan, dan informasi
+            terkait genre serta penerbit buku akan ditambahkan.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>req</code></td>
+
+                <td class="type">
+                  <span class="param-type">object</span>
+                </td>
+
+                <td class="description last">
+                  Request objek yang berisi permintaan daftar buku
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>res</code></td>
+
+                <td class="type">
+                  <span class="param-type">object</span>
+                </td>
+
+                <td class="description last">
+                  Response objek yang akan mengirimkan hasil operasi ke client
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="service_public-service.js.html"
+                    >service/public-service.js</a
+                  >, <a href="service_public-service.js.html#line96">line 96</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">Daftar buku yang tersedia</div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">Promise.&lt;Array.&lt;object>></span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="loanBook">
+            <span class="type-signature">(async) </span>loanBook<span
+              class="signature"
+              >(req, res, next)</span
+            ><span class="type-signature"> &rarr; {void}</span>
+          </h4>
+
+          <div class="description">
+            Controller untuk meminjam buku. Fungsi ini menerima request untuk
+            meminjam buku dan memanggil `publicService.loanBook()` untuk
+            memproses transaksi peminjaman. Setelah berhasil, mengirimkan
+            respons dengan status 200 dan data peminjaman.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>req</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.Request</span>
+                </td>
+
+                <td class="description last">
+                  Request objek yang berisi data peminjaman buku.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>res</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.Response</span>
+                </td>
+
+                <td class="description last">
+                  Response objek untuk mengirimkan hasil operasi ke client.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>next</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.NextFunction</span>
+                </td>
+
+                <td class="description last">
+                  Fungsi middleware untuk meneruskan error ke handler
+                  berikutnya.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="controller_public-controller.js.html"
+                    >controller/public-controller.js</a
+                  >,
+                  <a href="controller_public-controller.js.html#line129"
+                    >line 129</a
+                  >
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">
+            Mengirimkan respons JSON dengan status 200 dan data peminjaman jika
+            berhasil, atau error jika gagal.
+          </div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">void</span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="loanBook">
+            <span class="type-signature">(async) </span>loanBook<span
+              class="signature"
+              >(req, res)</span
+            ><span class="type-signature"> &rarr; {Promise.&lt;object>}</span>
+          </h4>
+
+          <div class="description">
+            Meminjamkan buku Fungsi untuk meminjam buku. Mengecek apakah buku
+            masih tersedia, apakah pengguna sudah meminjam buku yang sama, dan
+            apakah stok buku mencukupi. Jika semua validasi lulus, transaksi
+            peminjaman akan diproses dan stok buku akan dikurangi.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>req</code></td>
+
+                <td class="type">
+                  <span class="param-type">object</span>
+                </td>
+
+                <td class="description last">
+                  Request objek yang berisi data peminjaman buku
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>res</code></td>
+
+                <td class="type">
+                  <span class="param-type">object</span>
+                </td>
+
+                <td class="description last">
+                  Response objek yang akan mengirimkan hasil operasi ke client
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="service_public-service.js.html"
+                    >service/public-service.js</a
+                  >,
+                  <a href="service_public-service.js.html#line207">line 207</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Throws:</h5>
+          <ul>
+            <li>
+              <dl>
+                <dt>
+                  <div class="param-desc">
+                    400 - Jika buku sudah dipinjam atau stok buku habis
+                  </div>
+                </dt>
+                <dd></dd>
+                <dt>
+                  <dl>
+                    <dt>Type</dt>
+                    <dd>
+                      <span class="param-type"
+                        ><a href="ResponseError.html">ResponseError</a></span
+                      >
+                    </dd>
+                  </dl>
+                </dt>
+                <dd></dd>
+              </dl>
+            </li>
+
+            <li>
+              <dl>
+                <dt>
+                  <div class="param-desc">
+                    404 - Jika buku tidak ditemukan atau sudah dihapus
+                  </div>
+                </dt>
+                <dd></dd>
+                <dt>
+                  <dl>
+                    <dt>Type</dt>
+                    <dd>
+                      <span class="param-type"
+                        ><a href="ResponseError.html">ResponseError</a></span
+                      >
+                    </dd>
+                  </dl>
+                </dt>
+                <dd></dd>
+              </dl>
+            </li>
+          </ul>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">Data peminjaman yang berhasil</div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">Promise.&lt;object></span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="login">
+            <span class="type-signature">(async) </span>login<span
+              class="signature"
+              >(req, res, next)</span
+            ><span class="type-signature"> &rarr; {void}</span>
+          </h4>
+
+          <div class="description">
+            Controller untuk login pengguna. Fungsi ini menangani request login,
+            dengan memanggil `publicService.login()` untuk memproses data login.
+            Setelah berhasil, mengirimkan respons dengan status 200 dan data
+            pengguna yang berhasil login.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>req</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.Request</span>
+                </td>
+
+                <td class="description last">
+                  Request objek yang berisi data login.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>res</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.Response</span>
+                </td>
+
+                <td class="description last">
+                  Response objek untuk mengirimkan hasil operasi ke client.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>next</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.NextFunction</span>
+                </td>
+
+                <td class="description last">
+                  Fungsi middleware untuk meneruskan error ke handler
+                  berikutnya.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="controller_public-controller.js.html"
+                    >controller/public-controller.js</a
+                  >,
+                  <a href="controller_public-controller.js.html#line43"
+                    >line 43</a
+                  >
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">
+            Mengirimkan respons JSON dengan status 200 dan data pengguna jika
+            berhasil, atau error jika gagal.
+          </div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">void</span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="login">
+            <span class="type-signature">(async) </span>login<span
+              class="signature"
+              >(req, res)</span
+            ><span class="type-signature"> &rarr; {Promise.&lt;string>}</span>
+          </h4>
+
+          <div class="description">
+            Login pengguna Fungsi untuk memverifikasi email dan password
+            pengguna. Jika data yang dimasukkan salah, maka akan mengembalikan
+            pesan kesalahan. Jika berhasil, akan mengembalikan token JWT untuk
+            otentikasi lebih lanjut.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>req</code></td>
+
+                <td class="type">
+                  <span class="param-type">object</span>
+                </td>
+
+                <td class="description last">
+                  Request objek yang berisi data login pengguna
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>res</code></td>
+
+                <td class="type">
+                  <span class="param-type">object</span>
+                </td>
+
+                <td class="description last">
+                  Response objek yang akan mengirimkan hasil operasi ke client
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="service_public-service.js.html"
+                    >service/public-service.js</a
+                  >, <a href="service_public-service.js.html#line62">line 62</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Throws:</h5>
+
+          <dl>
+            <dt>
+              <div class="param-desc">400 - Jika email atau password salah</div>
+            </dt>
+            <dd></dd>
+            <dt>
+              <dl>
+                <dt>Type</dt>
+                <dd>
+                  <span class="param-type"
+                    ><a href="ResponseError.html">ResponseError</a></span
+                  >
+                </dd>
+              </dl>
+            </dt>
+            <dd></dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">Token JWT untuk otentikasi pengguna</div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">Promise.&lt;string></span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="registrasi">
+            <span class="type-signature">(async) </span>registrasi<span
+              class="signature"
+              >(req, res, next)</span
+            ><span class="type-signature"> &rarr; {void}</span>
+          </h4>
+
+          <div class="description">
+            Controller untuk registrasi pengguna. Fungsi ini menangani request
+            registrasi pengguna baru, dengan memanggil
+            `publicService.registrasi()` untuk memproses data registrasi.
+            Setelah berhasil, mengirimkan respons dengan status 200 dan pesan
+            sukses.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>req</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.Request</span>
+                </td>
+
+                <td class="description last">
+                  Request objek yang berisi data registrasi.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>res</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.Response</span>
+                </td>
+
+                <td class="description last">
+                  Response objek untuk mengirimkan hasil operasi ke client.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>next</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.NextFunction</span>
+                </td>
+
+                <td class="description last">
+                  Fungsi middleware untuk meneruskan error ke handler
+                  berikutnya.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="controller_public-controller.js.html"
+                    >controller/public-controller.js</a
+                  >,
+                  <a href="controller_public-controller.js.html#line17"
+                    >line 17</a
+                  >
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">
+            Mengirimkan respons JSON dengan status 200 jika berhasil, atau error
+            jika gagal.
+          </div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">void</span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="registrasi">
+            <span class="type-signature">(async) </span>registrasi<span
+              class="signature"
+              >(req, res)</span
+            ><span class="type-signature"> &rarr; {Promise.&lt;object>}</span>
+          </h4>
+
+          <div class="description">
+            Registrasi pengguna baru Fungsi untuk melakukan registrasi akun
+            pengguna baru. Mengecek apakah email yang dimasukkan sudah ada. Jika
+            sudah ada, maka akan mengembalikan pesan kesalahan. Jika tidak,
+            password akan di-hash dan akun pengguna baru akan dibuat dengan data
+            yang diterima dari body request.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>req</code></td>
+
+                <td class="type">
+                  <span class="param-type">object</span>
+                </td>
+
+                <td class="description last">
+                  Request objek yang berisi data pengguna yang akan didaftarkan
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>res</code></td>
+
+                <td class="type">
+                  <span class="param-type">object</span>
+                </td>
+
+                <td class="description last">
+                  Response objek yang akan mengirimkan hasil operasi ke client
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="service_public-service.js.html"
+                    >service/public-service.js</a
+                  >, <a href="service_public-service.js.html#line18">line 18</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Throws:</h5>
+
+          <dl>
+            <dt>
+              <div class="param-desc">400 - Jika email sudah terdaftar</div>
+            </dt>
+            <dd></dd>
+            <dt>
+              <dl>
+                <dt>Type</dt>
+                <dd>
+                  <span class="param-type"
+                    ><a href="ResponseError.html">ResponseError</a></span
+                  >
+                </dd>
+              </dl>
+            </dt>
+            <dd></dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">Data pengguna yang baru saja terdaftar</div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">Promise.&lt;object></span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="removeBook">
+            <span class="type-signature">(async) </span>removeBook<span
+              class="signature"
+              >(req, res)</span
+            ><span class="type-signature"> &rarr; {string}</span>
+          </h4>
+
+          <div class="description">
+            Menghapus buku dari database. Menggunakan data yang diterima melalui
+            body request untuk menghapus buku berdasarkan ID. Jika buku tidak
+            ditemukan, maka akan mengembalikan kesalahan. Data waktu terakhir
+            diperbarui akan disertakan saat penghapusan.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>req</code></td>
+
+                <td class="type">
+                  <span class="param-type">object</span>
+                </td>
+
+                <td class="description last">
+                  Request objek yang berisi ID buku yang akan dihapus
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>res</code></td>
+
+                <td class="type">
+                  <span class="param-type">object</span>
+                </td>
+
+                <td class="description last">
+                  Response objek yang akan mengirimkan hasil operasi ke client
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="service_admin-service.js.html"
+                    >service/admin-service.js</a
+                  >,
+                  <a href="service_admin-service.js.html#line100">line 100</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Throws:</h5>
+
+          <dl>
+            <dt>
+              <div class="param-desc">404 - Jika buku tidak ditemukan</div>
+            </dt>
+            <dd></dd>
+            <dt>
+              <dl>
+                <dt>Type</dt>
+                <dd>
+                  <span class="param-type"
+                    ><a href="ResponseError.html">ResponseError</a></span
+                  >
+                </dd>
+              </dl>
+            </dt>
+            <dd></dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">200 - Pesan sukses buku berhasil dihapus</div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">string</span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="returnBook">
+            <span class="type-signature">(async) </span>returnBook<span
+              class="signature"
+              >(req, res, next)</span
+            ><span class="type-signature"> &rarr; {void}</span>
+          </h4>
+
+          <div class="description">
+            Controller untuk mengembalikan buku. Fungsi ini menerima request
+            untuk mengembalikan buku dan memanggil `publicService.returnBook()`
+            untuk memproses pengembalian buku. Setelah berhasil, mengirimkan
+            respons dengan status 200 dan pesan pengembalian.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>req</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.Request</span>
+                </td>
+
+                <td class="description last">
+                  Request objek yang berisi data pengembalian buku.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>res</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.Response</span>
+                </td>
+
+                <td class="description last">
+                  Response objek untuk mengirimkan hasil operasi ke client.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>next</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.NextFunction</span>
+                </td>
+
+                <td class="description last">
+                  Fungsi middleware untuk meneruskan error ke handler
+                  berikutnya.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="controller_public-controller.js.html"
+                    >controller/public-controller.js</a
+                  >,
+                  <a href="controller_public-controller.js.html#line155"
+                    >line 155</a
+                  >
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">
+            Mengirimkan respons JSON dengan status 200 dan pesan pengembalian
+            jika berhasil, atau error jika gagal.
+          </div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">void</span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="returnBook">
+            <span class="type-signature">(async) </span>returnBook<span
+              class="signature"
+              >(req, res)</span
+            ><span class="type-signature"> &rarr; {Promise.&lt;object>}</span>
+          </h4>
+
+          <div class="description">
+            Mengembalikan buku Fungsi untuk mengembalikan buku yang sudah
+            dipinjam. Mengecek apakah buku yang dikembalikan benar-benar
+            dipinjam oleh pengguna dan memperbarui stok buku yang dikembalikan.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>req</code></td>
+
+                <td class="type">
+                  <span class="param-type">object</span>
+                </td>
+
+                <td class="description last">
+                  Request objek yang berisi data pengembalian buku
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>res</code></td>
+
+                <td class="type">
+                  <span class="param-type">object</span>
+                </td>
+
+                <td class="description last">
+                  Response objek yang akan mengirimkan hasil operasi ke client
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="service_public-service.js.html"
+                    >service/public-service.js</a
+                  >,
+                  <a href="service_public-service.js.html#line286">line 286</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Throws:</h5>
+
+          <dl>
+            <dt>
+              <div class="param-desc">
+                400 - Jika buku yang dikembalikan tidak pernah dipinjam
+              </div>
+            </dt>
+            <dd></dd>
+            <dt>
+              <dl>
+                <dt>Type</dt>
+                <dd>
+                  <span class="param-type"
+                    ><a href="ResponseError.html">ResponseError</a></span
+                  >
+                </dd>
+              </dl>
+            </dt>
+            <dd></dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">Pesan sukses pengembalian buku</div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">Promise.&lt;object></span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="rolesMiddleware">
+            <span class="type-signature"></span>rolesMiddleware<span
+              class="signature"
+              >(req, res, next)</span
+            ><span class="type-signature"> &rarr; {void}</span>
+          </h4>
+
+          <div class="description">
+            Middleware untuk memeriksa peran pengguna berdasarkan token JWT.
+            Fungsi ini memverifikasi token JWT yang dikirim dalam header
+            `Authorization` dan memeriksa peran pengguna yang tercantum dalam
+            payload token. Jika peran pengguna adalah `Admin`, maka permintaan
+            dilanjutkan ke middleware berikutnya. Jika peran tidak sesuai,
+            middleware ini mengembalikan respons dengan status 403. Jika token
+            tidak ada atau tidak valid, middleware ini mengembalikan respons
+            dengan status 401.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>req</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.Request</span>
+                </td>
+
+                <td class="description last">
+                  Request objek yang berisi header authorization.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>res</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.Response</span>
+                </td>
+
+                <td class="description last">
+                  Response objek untuk mengirimkan hasil operasi ke client.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>next</code></td>
+
+                <td class="type">
+                  <span class="param-type">express.NextFunction</span>
+                </td>
+
+                <td class="description last">
+                  Fungsi middleware untuk melanjutkan eksekusi ke middleware
+                  berikutnya.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="middleware_roles-middleware.js.html"
+                    >middleware/roles-middleware.js</a
+                  >,
+                  <a href="middleware_roles-middleware.js.html#line19"
+                    >line 19</a
+                  >
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">
+            Mengirimkan respons status 401 atau 403 jika token tidak valid atau
+            peran tidak sesuai, atau melanjutkan eksekusi ke middleware
+            berikutnya jika peran sesuai.
+          </div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">void</span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="updateBook">
+            <span class="type-signature">(async) </span>updateBook<span
+              class="signature"
+              >(req, res)</span
+            ><span class="type-signature"> &rarr; {string}</span>
+          </h4>
+
+          <div class="description">
+            Memperbarui data buku yang sudah ada di database. Menggunakan data
+            yang diterima melalui body request untuk memperbarui buku yang sudah
+            ada. Jika buku dengan judul yang sama sudah ada, maka akan
+            mengembalikan kesalahan. Genre buku yang lama akan dihapus dan genre
+            baru akan ditambahkan.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>req</code></td>
+
+                <td class="type">
+                  <span class="param-type">object</span>
+                </td>
+
+                <td class="description last">
+                  Request objek yang berisi data buku yang akan diperbarui
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>res</code></td>
+
+                <td class="type">
+                  <span class="param-type">object</span>
+                </td>
+
+                <td class="description last">
+                  Response objek yang akan mengirimkan hasil operasi ke client
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="service_admin-service.js.html"
+                    >service/admin-service.js</a
+                  >, <a href="service_admin-service.js.html#line51">line 51</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Throws:</h5>
+
+          <dl>
+            <dt>
+              <div class="param-desc">400 - Jika buku sudah ada</div>
+            </dt>
+            <dd></dd>
+            <dt>
+              <dl>
+                <dt>Type</dt>
+                <dd>
+                  <span class="param-type"
+                    ><a href="ResponseError.html">ResponseError</a></span
+                  >
+                </dd>
+              </dl>
+            </dt>
+            <dd></dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">
+            200 - Pesan sukses buku berhasil diperbarui
+          </div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">string</span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="validate">
+            <span class="type-signature"></span>validate<span class="signature"
+              >(schema, request)</span
+            ><span class="type-signature"> &rarr; {Object}</span>
+          </h4>
+
+          <div class="description">
+            Fungsi untuk memvalidasi request menggunakan schema Joi. Fungsi ini
+            akan menerima schema validasi dan data request, kemudian memvalidasi
+            data request terhadap schema tersebut. Jika data tidak valid, fungsi
+            ini akan melemparkan error dengan status 400 dan pesan error yang
+            diberikan oleh Joi. Jika data valid, fungsi ini akan mengembalikan
+            nilai yang sudah divalidasi.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>schema</code></td>
+
+                <td class="type">
+                  <span class="param-type">Object</span>
+                </td>
+
+                <td class="description last">
+                  Schema Joi yang digunakan untuk memvalidasi data request.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>request</code></td>
+
+                <td class="type">
+                  <span class="param-type">Object</span>
+                </td>
+
+                <td class="description last">
+                  Data request yang akan divalidasi.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="validation_validation.js.html"
+                    >validation/validation.js</a
+                  >, <a href="validation_validation.js.html#line3">line 3</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Throws:</h5>
+
+          <dl>
+            <dt>
+              <div class="param-desc">
+                Jika data tidak valid, melemparkan error dengan status 400 dan
+                pesan error dari Joi.
+              </div>
+            </dt>
+            <dd></dd>
+            <dt>
+              <dl>
+                <dt>Type</dt>
+                <dd>
+                  <span class="param-type"
+                    ><a href="ResponseError.html">ResponseError</a></span
+                  >
+                </dd>
+              </dl>
+            </dt>
+            <dd></dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">
+            Data yang sudah divalidasi sesuai dengan schema yang diberikan.
+          </div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">Object</span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="verifyJWT">
+            <span class="type-signature"></span>verifyJWT<span class="signature"
+              >(token)</span
+            ><span class="type-signature"> &rarr; {object}</span>
+          </h4>
+
+          <div class="description">
+            Memverifikasi dan mendekode token JWT. Fungsi ini memverifikasi
+            keaslian token JWT dan mendekode payloadnya. Jika token tidak valid
+            atau telah kedaluwarsa, akan melemparkan error.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>token</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="description last">
+                  Token JWT yang ingin diverifikasi.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="helpers_jwt-config.js.html">helpers/jwt-config.js</a
+                  >, <a href="helpers_jwt-config.js.html#line46">line 46</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Throws:</h5>
+
+          <dl>
+            <dt>
+              <div class="param-desc">
+                Jika token tidak valid atau telah kedaluwarsa.
+              </div>
+            </dt>
+            <dd></dd>
+            <dt>
+              <dl>
+                <dt>Type</dt>
+                <dd>
+                  <span class="param-type">Error</span>
+                </dd>
+              </dl>
+            </dt>
+            <dd></dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">
+            Payload yang terdekode dari token jika valid.
+          </div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">object</span>
+            </dd>
+          </dl>
+        </article>
+      </section>
     </div>
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="loanValidation"><span class="type-signature">(constant) </span>loanValidation<span class="type-signature"> :Object</span></h4>
-
-
-
-
-<div class="description">
-    Validasi untuk peminjaman buku.
-
-Validasi ini memastikan bahwa data yang diterima untuk proses peminjaman buku sesuai dengan format yang benar.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
+    <nav>
+      <h2><a href="index.html">Home</a></h2>
+      <h3>Classes</h3>
+      <ul>
+        <li><a href="ResponseError.html">ResponseError</a></li>
+      </ul>
+      <h3>Global</h3>
+      <ul>
+        <li><a href="global.html#addNewBook">addNewBook</a></li>
+        <li><a href="global.html#authMiddleware">authMiddleware</a></li>
+        <li><a href="global.html#capitalizeWord">capitalizeWord</a></li>
+        <li><a href="global.html#errorMiddleware">errorMiddleware</a></li>
+        <li><a href="global.html#generateJWT">generateJWT</a></li>
+        <li><a href="global.html#getBookById">getBookById</a></li>
+        <li><a href="global.html#getBookList">getBookList</a></li>
+        <li><a href="global.html#loanBook">loanBook</a></li>
+        <li><a href="global.html#loanValidation">loanValidation</a></li>
+        <li><a href="global.html#logger">logger</a></li>
+        <li><a href="global.html#login">login</a></li>
         <li>
-            
-<span class="param-type">Object</span>
-
-
+          <a href="global.html#loginUserValidation">loginUserValidation</a>
         </li>
-    </ul>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>student_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">ID mahasiswa yang meminjam buku, wajib ada dan harus berupa angka</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>book_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">ID buku yang akan dipinjam, wajib ada dan harus berupa angka</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>notes</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Catatan peminjaman buku yang bersifat opsional, panjang maksimal 100 karakter dan bisa kosong</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="validation_loan-validation.js.html">validation/loan-validation.js</a>, <a href="validation_loan-validation.js.html#line3">line 3</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="logger"><span class="type-signature">(constant) </span>logger<span class="type-signature"> :winston.Logger</span></h4>
-
-
-
-
-<div class="description">
-    Logger instance yang dikonfigurasi menggunakan Winston.
-
-Konfigurasi:
-- Level log: `info`
-- Format: JSON dengan indentasi 1 spasi
-- Transport: Output ke konsol
-
-Penggunaan:
-- Gunakan metode seperti `logger.info`, `logger.error`, atau `logger.warn` untuk mencatat log dengan level yang sesuai.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
+        <li><a href="global.html#newBookValidation">newBookValidation</a></li>
+        <li><a href="global.html#prismaClient">prismaClient</a></li>
+        <li><a href="global.html#registrasi">registrasi</a></li>
         <li>
-            
-<span class="param-type">winston.Logger</span>
-
-
+          <a href="global.html#registrationUserValidation"
+            >registrationUserValidation</a
+          >
         </li>
-    </ul>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>level</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Level logging default untuk logger ini (default: "info").</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>format</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">winston.Logform.Format</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Format logging yang digunakan (default: JSON dengan indentasi 1 spasi).</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>transports</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;winston.transport></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Transportasi logging yang digunakan (default: Console transport).</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app_logger.js.html">app/logger.js</a>, <a href="app_logger.js.html#line20">line 20</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="https://github.com/winstonjs/winston">https://github.com/winstonjs/winston</a> Dokumentasi resmi Winston</li>
-        </ul>
-    </dd>
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="loginUserValidation"><span class="type-signature">(constant) </span>loginUserValidation<span class="type-signature"> :Object</span></h4>
-
-
-
-
-<div class="description">
-    Validasi untuk login pengguna.
-
-Validasi ini memastikan bahwa data yang diterima untuk proses login pengguna sesuai dengan format yang benar.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
+        <li><a href="global.html#removeBook">removeBook</a></li>
         <li>
-            
-<span class="param-type">Object</span>
-
-
+          <a href="global.html#removeBookValidationById"
+            >removeBookValidationById</a
+          >
         </li>
-    </ul>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>email</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Alamat email pengguna, wajib ada dan harus berupa email yang valid</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>password</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Kata sandi pengguna, wajib ada dan tidak dibatasi panjangnya</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="validation_user-validation.js.html">validation/user-validation.js</a>, <a href="validation_user-validation.js.html#line21">line 21</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="newBookValidation"><span class="type-signature">(constant) </span>newBookValidation<span class="type-signature"> :Object</span></h4>
-
-
-
-
-<div class="description">
-    Validasi untuk menambahkan buku baru.
-
-Validasi ini memastikan bahwa data yang diterima untuk buku baru memenuhi semua persyaratan,
-termasuk validasi untuk id, judul, deskripsi, penulis, ISBN, ID penerbit, genre, dan stok.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
+        <li><a href="global.html#returnBook">returnBook</a></li>
+        <li><a href="global.html#returnValidation">returnValidation</a></li>
+        <li><a href="global.html#rolesMiddleware">rolesMiddleware</a></li>
+        <li><a href="global.html#updateBook">updateBook</a></li>
         <li>
-            
-<span class="param-type">Object</span>
-
-
+          <a href="global.html#updateBookValidation">updateBookValidation</a>
         </li>
-    </ul>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">ID buku yang harus berupa angka dan wajib ada</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>title</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Judul buku yang harus berupa string dengan panjang maksimal 255 karakter dan wajib ada</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>description</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Deskripsi buku yang bersifat opsional dan maksimal 255 karakter</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>author</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Penulis buku yang harus berupa string dengan panjang maksimal 255 karakter dan wajib ada</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>isbn</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">ISBN buku yang harus berupa string dengan panjang maksimal 255 karakter dan wajib ada</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>publisherBookId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">ID penerbit yang harus berupa angka dan wajib ada</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>genres</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;number></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Daftar ID genre yang harus berupa array angka dan wajib ada</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>stok</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Jumlah stok buku yang harus berupa angka dan minimal 0</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="validation_admin-validation.js.html">validation/admin-validation.js</a>, <a href="validation_admin-validation.js.html#line3">line 3</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="prismaClient"><span class="type-signature">(constant) </span>prismaClient<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    Instance PrismaClient yang dikonfigurasi untuk logging.
-
-Konfigurasi logging:
-- query: Log untuk semua query yang dijalankan.
-- error: Log untuk semua error yang terjadi.
-- info: Log untuk informasi tambahan.
-- warn: Log untuk peringatan.
-
-Event handler:
-- `error`: Log error menggunakan logger.
-- `info`: Log informasi menggunakan logger.
-- `warn`: Log peringatan menggunakan logger.
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app_database.js.html">app/database.js</a>, <a href="app_database.js.html#line52">line 52</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="registrationUserValidation"><span class="type-signature">(constant) </span>registrationUserValidation<span class="type-signature"> :Object</span></h4>
-
-
-
-
-<div class="description">
-    Validasi untuk registrasi pengguna baru.
-
-Validasi ini memastikan bahwa data yang diterima untuk proses registrasi pengguna baru sesuai dengan format yang benar.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Nama pengguna, wajib ada dan memiliki panjang maksimal 100 karakter</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>email</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Alamat email pengguna, wajib ada dan harus berupa email yang valid</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>password</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Kata sandi pengguna, wajib ada dan tidak dibatasi panjangnya</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>gender</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Jenis kelamin pengguna, wajib ada dan hanya boleh bernilai "Male" atau "Female"</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="validation_user-validation.js.html">validation/user-validation.js</a>, <a href="validation_user-validation.js.html#line3">line 3</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="removeBookValidationById"><span class="type-signature">(constant) </span>removeBookValidationById<span class="type-signature"> :Object</span></h4>
-
-
-
-
-<div class="description">
-    Validasi untuk menghapus buku berdasarkan ID.
-
-Validasi ini memastikan bahwa ID buku yang akan dihapus adalah berupa angka dan wajib ada.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">ID buku yang akan dihapus, yang harus berupa angka dan wajib ada</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="validation_admin-validation.js.html">validation/admin-validation.js</a>, <a href="validation_admin-validation.js.html#line57">line 57</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="returnValidation"><span class="type-signature">(constant) </span>returnValidation<span class="type-signature"> :Object</span></h4>
-
-
-
-
-<div class="description">
-    Validasi untuk pengembalian buku.
-
-Validasi ini memastikan bahwa data yang diterima untuk proses pengembalian buku sesuai dengan format yang benar.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>student_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">ID mahasiswa yang mengembalikan buku, wajib ada dan harus berupa angka</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>book_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">ID buku yang akan dikembalikan, wajib ada dan harus berupa angka</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="validation_loan-validation.js.html">validation/loan-validation.js</a>, <a href="validation_loan-validation.js.html#line19">line 19</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="updateBookValidation"><span class="type-signature">(constant) </span>updateBookValidation<span class="type-signature"> :Object</span></h4>
-
-
-
-
-<div class="description">
-    Validasi untuk memperbarui buku.
-
-Validasi ini memastikan bahwa data yang diterima untuk memperbarui buku memenuhi semua persyaratan yang sama
-dengan validasi untuk buku baru, termasuk validasi untuk id, judul, deskripsi, penulis, ISBN, ID penerbit, genre, dan stok.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">ID buku yang harus berupa angka dan wajib ada</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>title</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Judul buku yang harus berupa string dengan panjang maksimal 255 karakter dan wajib ada</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>description</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Deskripsi buku yang bersifat opsional dan maksimal 255 karakter</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>author</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Penulis buku yang harus berupa string dengan panjang maksimal 255 karakter dan wajib ada</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>isbn</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">ISBN buku yang harus berupa string dengan panjang maksimal 255 karakter dan wajib ada</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>publisherBookId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">ID penerbit yang harus berupa angka dan wajib ada</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>genres</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;number></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Daftar ID genre yang harus berupa array angka dan wajib ada</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>stok</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Jumlah stok buku yang harus berupa angka dan minimal 0</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="validation_admin-validation.js.html">validation/admin-validation.js</a>, <a href="validation_admin-validation.js.html#line30">line 30</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="addNewBook"><span class="type-signature">(async) </span>addNewBook<span class="signature">(req, res, next)</span><span class="type-signature"> &rarr; {void}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Menambahkan buku baru melalui layanan admin.
-
-Fungsi ini menerima request untuk menambahkan buku baru, kemudian
-memanggil layanan `adminService.addNewBook()` untuk memproses data
-buku yang dikirim melalui request. Setelah itu, mengirimkan respons
-dengan status 200 dan data buku yang berhasil ditambahkan.
-
-Jika terjadi error, error tersebut diteruskan ke middleware error handler.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.Request</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request objek yang berisi data buku yang akan ditambahkan.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.Response</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Response objek untuk mengirimkan hasil operasi ke client.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>next</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.NextFunction</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Fungsi middleware untuk meneruskan error ke handler berikutnya.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controller_admin-controller.js.html">controller/admin-controller.js</a>, <a href="controller_admin-controller.js.html#line19">line 19</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Mengirimkan respons JSON dengan status 200 jika berhasil, atau error jika gagal.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">void</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="addNewBook"><span class="type-signature">(async) </span>addNewBook<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {string}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Menambahkan buku baru ke dalam database.
-
-Menggunakan data yang diterima melalui body request untuk membuat buku baru. Jika buku dengan judul yang sama sudah ada,
-maka akan mengembalikan kesalahan. Setiap genre buku akan ditambahkan ke dalam tabel penghubung antara genre dan buku.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request objek yang berisi data buku untuk ditambahkan</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Response objek yang akan mengirimkan hasil operasi ke client</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="service_admin-service.js.html">service/admin-service.js</a>, <a href="service_admin-service.js.html#line10">line 10</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Throws:</h5>
-
-        
-
-<dl>
-    <dt>
-        <div class="param-desc">
-        400 - Jika buku sudah ada
-        </div>
-    </dt>
-    <dd></dd>
-    <dt>
-        <dl>
-            <dt>
-                Type
-            </dt>
-            <dd>
-                
-<span class="param-type"><a href="ResponseError.html">ResponseError</a></span>
-
-
-            </dd>
-        </dl>
-    </dt>
-    <dd></dd>
-</dl>
-
-
-    
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    200 - Pesan sukses buku berhasil ditambahkan
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">string</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="authMiddleware"><span class="type-signature"></span>authMiddleware<span class="signature">(req, res, next)</span><span class="type-signature"> &rarr; {void}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Middleware untuk memverifikasi token JWT pada header authorization.
-
-Fungsi ini memeriksa keberadaan dan validitas token JWT yang dikirimkan
-dalam header authorization. Jika token tidak ada, telah kedaluwarsa, atau tidak valid,
-middleware ini akan mengembalikan respons dengan status 401. Jika token valid,
-middleware ini akan melanjutkan eksekusi ke middleware berikutnya.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.Request</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request objek yang berisi header authorization.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.Response</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Response objek untuk mengirimkan hasil operasi ke client.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>next</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.NextFunction</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Fungsi middleware untuk meneruskan eksekusi ke middleware berikutnya.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="middleware_auth-middleware.js.html">middleware/auth-middleware.js</a>, <a href="middleware_auth-middleware.js.html#line18">line 18</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Mengirimkan respons JSON dengan status 401 jika token tidak valid atau kedaluwarsa, atau melanjutkan ke middleware berikutnya jika valid.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">void</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="capitalizeWord"><span class="type-signature"></span>capitalizeWord<span class="signature">(input)</span><span class="type-signature"> &rarr; {string}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Mengubah setiap kata dalam kalimat menjadi huruf kapital di awalnya.
-
-Fungsi ini menerima sebuah string, memecahnya menjadi kata-kata berdasarkan spasi,
-kemudian mengubah huruf pertama dari setiap kata menjadi kapital. Hasilnya adalah
-kalimat dengan setiap kata dimulai dengan huruf kapital.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>input</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Kalimat atau string yang ingin diubah kapitalnya.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="helpers_string-helper.js.html">helpers/string-helper.js</a>, <a href="helpers_string-helper.js.html#line12">line 12</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Kalimat dengan setiap kata dimulai dengan huruf kapital.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">string</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="errorMiddleware"><span class="type-signature"></span>errorMiddleware<span class="signature">(err, req, res, next)</span><span class="type-signature"> &rarr; {void}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Middleware untuk menangani error dalam aplikasi.
-
-Middleware ini menangani error yang dilemparkan oleh aplikasi. Jika error yang
-dilemparkan adalah instance dari `ResponseError`, status dan pesan error akan
-dikirimkan sesuai dengan status yang diberikan. Jika error bukan `ResponseError`,
-akan mengembalikan respons error dengan status 500 dan pesan error yang disediakan.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>err</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Error</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Error yang terjadi selama eksekusi request.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.Request</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request objek yang berisi informasi permintaan.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.Response</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Response objek untuk mengirimkan hasil operasi ke client.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>next</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.NextFunction</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Fungsi untuk melanjutkan eksekusi middleware berikutnya.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="middleware_error-middleware.js.html">middleware/error-middleware.js</a>, <a href="middleware_error-middleware.js.html#line18">line 18</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Mengirimkan respons error dalam bentuk JSON sesuai dengan status error.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">void</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="generateJWT"><span class="type-signature"></span>generateJWT<span class="signature">(name, role, expiresIn<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Membuat JSON Web Token (JWT) untuk pengguna.
-
-Fungsi ini membuat token JWT berdasarkan nama pengguna, peran, dan waktu kedaluwarsa.
-Token ini dapat digunakan untuk autentikasi dan otorisasi dalam aplikasi.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last">Nama pengguna yang akan disematkan dalam token.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>role</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last">Peran pengguna yang akan disematkan dalam token (contoh: 'admin', 'user').</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>expiresIn</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    "24h"
-                
-                </td>
-            
-
-            <td class="description last">Waktu kedaluwarsa token (default: "24h").</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="helpers_jwt-config.js.html">helpers/jwt-config.js</a>, <a href="helpers_jwt-config.js.html#line21">line 21</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Token JWT yang telah dibuat.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">string</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getBookById"><span class="type-signature">(async) </span>getBookById<span class="signature">(req, res, next)</span><span class="type-signature"> &rarr; {void}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Controller untuk mendapatkan buku berdasarkan ID.
-
-Fungsi ini mengambil ID buku dari parameter request, memanggil
-`publicService.getBookById()` untuk mendapatkan buku berdasarkan ID.
-Jika buku ditemukan, mengirimkan respons dengan status 200 dan data buku.
-Jika tidak ditemukan, mengirimkan respons dengan status 404.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.Request</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request objek yang berisi parameter ID buku.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.Response</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Response objek untuk mengirimkan hasil operasi ke client.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>next</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.NextFunction</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Fungsi middleware untuk meneruskan error ke handler berikutnya.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controller_public-controller.js.html">controller/public-controller.js</a>, <a href="controller_public-controller.js.html#line94">line 94</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Mengirimkan respons JSON dengan status 200 dan data buku jika berhasil, atau 404 jika tidak ditemukan.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">void</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getBookById"><span class="type-signature">(async) </span>getBookById<span class="signature">(id)</span><span class="type-signature"> &rarr; {Promise.&lt;object>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Mendapatkan detail buku berdasarkan ID
-
-Fungsi untuk mengambil data detail buku berdasarkan ID. Jika buku tidak ditemukan atau sudah dihapus,
-maka akan mengembalikan pesan kesalahan.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">ID buku yang akan dicari</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="service_public-service.js.html">service/public-service.js</a>, <a href="service_public-service.js.html#line149">line 149</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Throws:</h5>
-
-        
-
-<dl>
-    <dt>
-        <div class="param-desc">
-        400 - Jika buku tidak ditemukan atau sudah dihapus
-        </div>
-    </dt>
-    <dd></dd>
-    <dt>
-        <dl>
-            <dt>
-                Type
-            </dt>
-            <dd>
-                
-<span class="param-type"><a href="ResponseError.html">ResponseError</a></span>
-
-
-            </dd>
-        </dl>
-    </dt>
-    <dd></dd>
-</dl>
-
-
-    
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Detail buku yang ditemukan
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;object></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getBookList"><span class="type-signature">(async) </span>getBookList<span class="signature">(req, res, next)</span><span class="type-signature"> &rarr; {void}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Controller untuk mendapatkan daftar buku.
-
-Fungsi ini memanggil `publicService.getBookList()` untuk mendapatkan semua buku
-yang tersedia. Setelah berhasil, mengirimkan respons dengan status 200 dan daftar buku.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.Request</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request objek yang diterima dari client.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.Response</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Response objek untuk mengirimkan hasil operasi ke client.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>next</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.NextFunction</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Fungsi middleware untuk meneruskan error ke handler berikutnya.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controller_public-controller.js.html">controller/public-controller.js</a>, <a href="controller_public-controller.js.html#line67">line 67</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Mengirimkan respons JSON dengan status 200 dan data buku jika berhasil, atau error jika gagal.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">void</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getBookList"><span class="type-signature">(async) </span>getBookList<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;object>>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Mendapatkan daftar buku
-
-Fungsi untuk mengambil semua daftar buku yang tersedia. Buku yang sudah dihapus akan diabaikan,
-dan informasi terkait genre serta penerbit buku akan ditambahkan.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request objek yang berisi permintaan daftar buku</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Response objek yang akan mengirimkan hasil operasi ke client</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="service_public-service.js.html">service/public-service.js</a>, <a href="service_public-service.js.html#line96">line 96</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Daftar buku yang tersedia
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;Array.&lt;object>></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="loanBook"><span class="type-signature">(async) </span>loanBook<span class="signature">(req, res, next)</span><span class="type-signature"> &rarr; {void}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Controller untuk meminjam buku.
-
-Fungsi ini menerima request untuk meminjam buku dan memanggil
-`publicService.loanBook()` untuk memproses transaksi peminjaman.
-Setelah berhasil, mengirimkan respons dengan status 200 dan data peminjaman.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.Request</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request objek yang berisi data peminjaman buku.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.Response</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Response objek untuk mengirimkan hasil operasi ke client.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>next</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.NextFunction</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Fungsi middleware untuk meneruskan error ke handler berikutnya.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controller_public-controller.js.html">controller/public-controller.js</a>, <a href="controller_public-controller.js.html#line129">line 129</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Mengirimkan respons JSON dengan status 200 dan data peminjaman jika berhasil, atau error jika gagal.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">void</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="loanBook"><span class="type-signature">(async) </span>loanBook<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise.&lt;object>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Meminjamkan buku
-
-Fungsi untuk meminjam buku. Mengecek apakah buku masih tersedia, apakah pengguna sudah meminjam buku yang sama,
-dan apakah stok buku mencukupi. Jika semua validasi lulus, transaksi peminjaman akan diproses dan stok buku akan dikurangi.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request objek yang berisi data peminjaman buku</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Response objek yang akan mengirimkan hasil operasi ke client</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="service_public-service.js.html">service/public-service.js</a>, <a href="service_public-service.js.html#line207">line 207</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Throws:</h5>
-<ul>
-        <li>
-
-<dl>
-    <dt>
-        <div class="param-desc">
-        400 - Jika buku sudah dipinjam atau stok buku habis
-        </div>
-    </dt>
-    <dd></dd>
-    <dt>
-        <dl>
-            <dt>
-                Type
-            </dt>
-            <dd>
-                
-<span class="param-type"><a href="ResponseError.html">ResponseError</a></span>
-
-
-            </dd>
-        </dl>
-    </dt>
-    <dd></dd>
-</dl>
-
-</li>
-    
-        <li>
-
-<dl>
-    <dt>
-        <div class="param-desc">
-        404 - Jika buku tidak ditemukan atau sudah dihapus
-        </div>
-    </dt>
-    <dd></dd>
-    <dt>
-        <dl>
-            <dt>
-                Type
-            </dt>
-            <dd>
-                
-<span class="param-type"><a href="ResponseError.html">ResponseError</a></span>
-
-
-            </dd>
-        </dl>
-    </dt>
-    <dd></dd>
-</dl>
-
-</li>
-    </ul>
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Data peminjaman yang berhasil
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;object></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="login"><span class="type-signature">(async) </span>login<span class="signature">(req, res, next)</span><span class="type-signature"> &rarr; {void}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Controller untuk login pengguna.
-
-Fungsi ini menangani request login, dengan memanggil `publicService.login()`
-untuk memproses data login. Setelah berhasil, mengirimkan respons dengan status 200
-dan data pengguna yang berhasil login.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.Request</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request objek yang berisi data login.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.Response</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Response objek untuk mengirimkan hasil operasi ke client.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>next</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.NextFunction</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Fungsi middleware untuk meneruskan error ke handler berikutnya.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controller_public-controller.js.html">controller/public-controller.js</a>, <a href="controller_public-controller.js.html#line43">line 43</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Mengirimkan respons JSON dengan status 200 dan data pengguna jika berhasil, atau error jika gagal.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">void</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="login"><span class="type-signature">(async) </span>login<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Login pengguna
-
-Fungsi untuk memverifikasi email dan password pengguna. Jika data yang dimasukkan salah,
-maka akan mengembalikan pesan kesalahan. Jika berhasil, akan mengembalikan token JWT untuk otentikasi lebih lanjut.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request objek yang berisi data login pengguna</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Response objek yang akan mengirimkan hasil operasi ke client</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="service_public-service.js.html">service/public-service.js</a>, <a href="service_public-service.js.html#line62">line 62</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Throws:</h5>
-
-        
-
-<dl>
-    <dt>
-        <div class="param-desc">
-        400 - Jika email atau password salah
-        </div>
-    </dt>
-    <dd></dd>
-    <dt>
-        <dl>
-            <dt>
-                Type
-            </dt>
-            <dd>
-                
-<span class="param-type"><a href="ResponseError.html">ResponseError</a></span>
-
-
-            </dd>
-        </dl>
-    </dt>
-    <dd></dd>
-</dl>
-
-
-    
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Token JWT untuk otentikasi pengguna
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;string></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="registrasi"><span class="type-signature">(async) </span>registrasi<span class="signature">(req, res, next)</span><span class="type-signature"> &rarr; {void}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Controller untuk registrasi pengguna.
-
-Fungsi ini menangani request registrasi pengguna baru, dengan memanggil
-`publicService.registrasi()` untuk memproses data registrasi. Setelah berhasil,
-mengirimkan respons dengan status 200 dan pesan sukses.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.Request</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request objek yang berisi data registrasi.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.Response</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Response objek untuk mengirimkan hasil operasi ke client.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>next</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.NextFunction</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Fungsi middleware untuk meneruskan error ke handler berikutnya.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controller_public-controller.js.html">controller/public-controller.js</a>, <a href="controller_public-controller.js.html#line17">line 17</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Mengirimkan respons JSON dengan status 200 jika berhasil, atau error jika gagal.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">void</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="registrasi"><span class="type-signature">(async) </span>registrasi<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise.&lt;object>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Registrasi pengguna baru
-
-Fungsi untuk melakukan registrasi akun pengguna baru. Mengecek apakah email yang dimasukkan sudah ada.
-Jika sudah ada, maka akan mengembalikan pesan kesalahan. Jika tidak, password akan di-hash dan akun pengguna
-baru akan dibuat dengan data yang diterima dari body request.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request objek yang berisi data pengguna yang akan didaftarkan</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Response objek yang akan mengirimkan hasil operasi ke client</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="service_public-service.js.html">service/public-service.js</a>, <a href="service_public-service.js.html#line18">line 18</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Throws:</h5>
-
-        
-
-<dl>
-    <dt>
-        <div class="param-desc">
-        400 - Jika email sudah terdaftar
-        </div>
-    </dt>
-    <dd></dd>
-    <dt>
-        <dl>
-            <dt>
-                Type
-            </dt>
-            <dd>
-                
-<span class="param-type"><a href="ResponseError.html">ResponseError</a></span>
-
-
-            </dd>
-        </dl>
-    </dt>
-    <dd></dd>
-</dl>
-
-
-    
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Data pengguna yang baru saja terdaftar
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;object></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="removeBook"><span class="type-signature">(async) </span>removeBook<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {string}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Menghapus buku dari database.
-
-Menggunakan data yang diterima melalui body request untuk menghapus buku berdasarkan ID. Jika buku tidak ditemukan,
-maka akan mengembalikan kesalahan. Data waktu terakhir diperbarui akan disertakan saat penghapusan.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request objek yang berisi ID buku yang akan dihapus</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Response objek yang akan mengirimkan hasil operasi ke client</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="service_admin-service.js.html">service/admin-service.js</a>, <a href="service_admin-service.js.html#line100">line 100</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Throws:</h5>
-
-        
-
-<dl>
-    <dt>
-        <div class="param-desc">
-        404 - Jika buku tidak ditemukan
-        </div>
-    </dt>
-    <dd></dd>
-    <dt>
-        <dl>
-            <dt>
-                Type
-            </dt>
-            <dd>
-                
-<span class="param-type"><a href="ResponseError.html">ResponseError</a></span>
-
-
-            </dd>
-        </dl>
-    </dt>
-    <dd></dd>
-</dl>
-
-
-    
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    200 - Pesan sukses buku berhasil dihapus
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">string</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="returnBook"><span class="type-signature">(async) </span>returnBook<span class="signature">(req, res, next)</span><span class="type-signature"> &rarr; {void}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Controller untuk mengembalikan buku.
-
-Fungsi ini menerima request untuk mengembalikan buku dan memanggil
-`publicService.returnBook()` untuk memproses pengembalian buku.
-Setelah berhasil, mengirimkan respons dengan status 200 dan pesan pengembalian.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.Request</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request objek yang berisi data pengembalian buku.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.Response</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Response objek untuk mengirimkan hasil operasi ke client.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>next</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.NextFunction</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Fungsi middleware untuk meneruskan error ke handler berikutnya.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controller_public-controller.js.html">controller/public-controller.js</a>, <a href="controller_public-controller.js.html#line155">line 155</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Mengirimkan respons JSON dengan status 200 dan pesan pengembalian jika berhasil, atau error jika gagal.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">void</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="returnBook"><span class="type-signature">(async) </span>returnBook<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise.&lt;object>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Mengembalikan buku
-
-Fungsi untuk mengembalikan buku yang sudah dipinjam. Mengecek apakah buku yang dikembalikan benar-benar dipinjam oleh pengguna
-dan memperbarui stok buku yang dikembalikan.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request objek yang berisi data pengembalian buku</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Response objek yang akan mengirimkan hasil operasi ke client</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="service_public-service.js.html">service/public-service.js</a>, <a href="service_public-service.js.html#line286">line 286</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Throws:</h5>
-
-        
-
-<dl>
-    <dt>
-        <div class="param-desc">
-        400 - Jika buku yang dikembalikan tidak pernah dipinjam
-        </div>
-    </dt>
-    <dd></dd>
-    <dt>
-        <dl>
-            <dt>
-                Type
-            </dt>
-            <dd>
-                
-<span class="param-type"><a href="ResponseError.html">ResponseError</a></span>
-
-
-            </dd>
-        </dl>
-    </dt>
-    <dd></dd>
-</dl>
-
-
-    
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Pesan sukses pengembalian buku
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;object></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="rolesMiddleware"><span class="type-signature"></span>rolesMiddleware<span class="signature">(req, res, next)</span><span class="type-signature"> &rarr; {void}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Middleware untuk memeriksa peran pengguna berdasarkan token JWT.
-
-Fungsi ini memverifikasi token JWT yang dikirim dalam header `Authorization` dan memeriksa
-peran pengguna yang tercantum dalam payload token. Jika peran pengguna adalah `Admin`,
-maka permintaan dilanjutkan ke middleware berikutnya. Jika peran tidak sesuai,
-middleware ini mengembalikan respons dengan status 403. Jika token tidak ada atau tidak valid,
-middleware ini mengembalikan respons dengan status 401.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.Request</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request objek yang berisi header authorization.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.Response</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Response objek untuk mengirimkan hasil operasi ke client.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>next</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">express.NextFunction</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Fungsi middleware untuk melanjutkan eksekusi ke middleware berikutnya.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="middleware_roles-middleware.js.html">middleware/roles-middleware.js</a>, <a href="middleware_roles-middleware.js.html#line19">line 19</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Mengirimkan respons status 401 atau 403 jika token tidak valid atau peran tidak sesuai,
-atau melanjutkan eksekusi ke middleware berikutnya jika peran sesuai.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">void</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="updateBook"><span class="type-signature">(async) </span>updateBook<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {string}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Memperbarui data buku yang sudah ada di database.
-
-Menggunakan data yang diterima melalui body request untuk memperbarui buku yang sudah ada. Jika buku dengan judul yang sama
-sudah ada, maka akan mengembalikan kesalahan. Genre buku yang lama akan dihapus dan genre baru akan ditambahkan.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request objek yang berisi data buku yang akan diperbarui</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Response objek yang akan mengirimkan hasil operasi ke client</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="service_admin-service.js.html">service/admin-service.js</a>, <a href="service_admin-service.js.html#line51">line 51</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Throws:</h5>
-
-        
-
-<dl>
-    <dt>
-        <div class="param-desc">
-        400 - Jika buku sudah ada
-        </div>
-    </dt>
-    <dd></dd>
-    <dt>
-        <dl>
-            <dt>
-                Type
-            </dt>
-            <dd>
-                
-<span class="param-type"><a href="ResponseError.html">ResponseError</a></span>
-
-
-            </dd>
-        </dl>
-    </dt>
-    <dd></dd>
-</dl>
-
-
-    
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    200 - Pesan sukses buku berhasil diperbarui
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">string</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="validate"><span class="type-signature"></span>validate<span class="signature">(schema, request)</span><span class="type-signature"> &rarr; {Object}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Fungsi untuk memvalidasi request menggunakan schema Joi.
-
-Fungsi ini akan menerima schema validasi dan data request, kemudian memvalidasi data request terhadap schema tersebut.
-Jika data tidak valid, fungsi ini akan melemparkan error dengan status 400 dan pesan error yang diberikan oleh Joi.
-Jika data valid, fungsi ini akan mengembalikan nilai yang sudah divalidasi.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>schema</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Schema Joi yang digunakan untuk memvalidasi data request.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>request</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Data request yang akan divalidasi.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="validation_validation.js.html">validation/validation.js</a>, <a href="validation_validation.js.html#line3">line 3</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Throws:</h5>
-
-        
-
-<dl>
-    <dt>
-        <div class="param-desc">
-        Jika data tidak valid, melemparkan error dengan status 400 dan pesan error dari Joi.
-        </div>
-    </dt>
-    <dd></dd>
-    <dt>
-        <dl>
-            <dt>
-                Type
-            </dt>
-            <dd>
-                
-<span class="param-type"><a href="ResponseError.html">ResponseError</a></span>
-
-
-            </dd>
-        </dl>
-    </dt>
-    <dd></dd>
-</dl>
-
-
-    
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Data yang sudah divalidasi sesuai dengan schema yang diberikan.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="verifyJWT"><span class="type-signature"></span>verifyJWT<span class="signature">(token)</span><span class="type-signature"> &rarr; {object}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Memverifikasi dan mendekode token JWT.
-
-Fungsi ini memverifikasi keaslian token JWT dan mendekode payloadnya.
-Jika token tidak valid atau telah kedaluwarsa, akan melemparkan error.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>token</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Token JWT yang ingin diverifikasi.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="helpers_jwt-config.js.html">helpers/jwt-config.js</a>, <a href="helpers_jwt-config.js.html#line46">line 46</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Throws:</h5>
-
-        
-
-<dl>
-    <dt>
-        <div class="param-desc">
-        Jika token tidak valid atau telah kedaluwarsa.
-        </div>
-    </dt>
-    <dd></dd>
-    <dt>
-        <dl>
-            <dt>
-                Type
-            </dt>
-            <dd>
-                
-<span class="param-type">Error</span>
-
-
-            </dd>
-        </dl>
-    </dt>
-    <dd></dd>
-</dl>
-
-
-    
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Payload yang terdekode dari token jika valid.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">object</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-    
-
-    
-
-    
-</article>
-
-</section>
-
-
-
-
-</div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ResponseError.html">ResponseError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addNewBook">addNewBook</a></li><li><a href="global.html#authMiddleware">authMiddleware</a></li><li><a href="global.html#capitalizeWord">capitalizeWord</a></li><li><a href="global.html#errorMiddleware">errorMiddleware</a></li><li><a href="global.html#generateJWT">generateJWT</a></li><li><a href="global.html#getBookById">getBookById</a></li><li><a href="global.html#getBookList">getBookList</a></li><li><a href="global.html#loanBook">loanBook</a></li><li><a href="global.html#loanValidation">loanValidation</a></li><li><a href="global.html#logger">logger</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#loginUserValidation">loginUserValidation</a></li><li><a href="global.html#newBookValidation">newBookValidation</a></li><li><a href="global.html#prismaClient">prismaClient</a></li><li><a href="global.html#registrasi">registrasi</a></li><li><a href="global.html#registrationUserValidation">registrationUserValidation</a></li><li><a href="global.html#removeBook">removeBook</a></li><li><a href="global.html#removeBookValidationById">removeBookValidationById</a></li><li><a href="global.html#returnBook">returnBook</a></li><li><a href="global.html#returnValidation">returnValidation</a></li><li><a href="global.html#rolesMiddleware">rolesMiddleware</a></li><li><a href="global.html#updateBook">updateBook</a></li><li><a href="global.html#updateBookValidation">updateBookValidation</a></li><li><a href="global.html#validate">validate</a></li><li><a href="global.html#verifyJWT">verifyJWT</a></li></ul>
-</nav>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Wed Dec 25 2024 21:16:57 GMT+0700 (Western Indonesia Time)
-</footer>
-
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
-</body>
+        <li><a href="global.html#validate">validate</a></li>
+        <li><a href="global.html#verifyJWT">verifyJWT</a></li>
+      </ul>
+    </nav>
+
+    <br class="clear" />
+
+    <footer>
+      Documentation generated by
+      <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Wed Dec 25
+      2024 21:16:57 GMT+0700 (Western Indonesia Time)
+    </footer>
+
+    <script>
+      prettyPrint();
+    </script>
+    <script src="scripts/linenumber.js"></script>
+  </body>
 </html>
