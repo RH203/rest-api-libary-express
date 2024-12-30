@@ -18,10 +18,11 @@ if (!SECRET_KEY) {
  *
  * @returns {string} Token JWT yang telah dibuat.
  */
-const generateJWT = (name, role, expiresIn = "24h") => {
+const generateJWT = (id, name, role, expiresIn = "24h") => {
   return jwt.sign(
     {
       data: {
+        id: id,
         name: name,
         role: role,
       },

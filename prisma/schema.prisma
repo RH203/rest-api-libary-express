@@ -20,7 +20,7 @@ model Student {
   password   String       @db.VarChar(100)
   created_at DateTime     @default(now())
   update_at  DateTime     @default(now()) @updatedAt
-  deteled_at DateTime?
+  deleted_at DateTime?
   ban_status Boolean      @default(false)
   role       Role
   gender     Gender

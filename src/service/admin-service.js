@@ -3,6 +3,7 @@ import {
   newBookValidation,
   removeBookValidationById,
   updateBookValidation,
+  updateUserValidation,
 } from "../validation/admin-validation.js";
 import { prismaClient } from "../app/database.js";
 import { ResponseError } from "../error/response-error.js";
@@ -136,8 +137,59 @@ const removeBook = async (req, res) => {
   return "Delete successfully";
 };
 
-// Edit user
-// See all user
+/**
+ * Edit user
+ */
+const updateUser = async data => {
+  const validateData = validate(updateUserValidation, data);
+
+  const existingUser = await prismaClient.student.findUnique({
+    where: { id: data.id },
+  });
+
+  if (!existingUser) {
+    throw new ResponseError(404, "User not found!");
+  }
+
+  return prismaClient.student.update({
+    where: { id: data.id },
+    data: {
+      name: data.name,
+      email: data.email,
+      role: data.role,
+      gender: data.gender,
+    },
+  });
+};
+
+/**
+ *
+ * See all user
+ * @returns {Promise<GetFindResult<Prisma.$StudentPayload<DefaultArgs>, {select: {name: boolean, email: boolean, role: boolean, gender: boolean, update_at: boolean, created_at: boolean, deleted_at: boolean, ban_status: boolean}}, {}>[]>}
+ */
+const getAllUser = async () => {
+  const result = await prismaClient.student.findMany({
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      gender: true,
+      update_at: true,
+      created_at: true,
+      deleted_at: true,
+      ban_status: true,
+    },
+  });
+
+  if (!result) {
+    throw new ResponseError(404, "Something went wrong!");
+  }
+
+  return result;
+};
+
+
 // Remove user
 
 // Add new Publisher
@@ -147,4 +199,6 @@ export default {
   addNewBook,
   removeBook,
   updateBook,
+  updateUser,
+  getAllUser
 };

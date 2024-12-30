@@ -64,8 +64,37 @@ const updateBook = async (req, res, next) => {
   }
 };
 
+const updateUser = async (req, res, next) => {
+  try {
+    const result = await adminService.updateUser(req.body);
+
+    res.status(200).json({
+      status: 200,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getAllUser = async (req, res, next) => {
+  try {
+  const result = await adminService.getAllUser();
+
+  res.status(200).json({
+    status: 200,
+    data: result,
+  })
+  } catch (error) {
+    next(error);
+  }
+
+}
+
 export default {
   addNewBook,
   removeBook,
   updateBook,
+  updateUser,
+  getAllUser
 };
