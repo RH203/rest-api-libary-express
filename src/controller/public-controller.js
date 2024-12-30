@@ -1,5 +1,6 @@
 import publicService from "../service/public-service.js";
 import { logger } from "../app/logger.js";
+import { verifyJWT } from "../helpers/jwt-config.js";
 
 /**
  * Controller untuk registrasi pengguna.
@@ -49,6 +50,30 @@ const login = async (req, res, next) => {
     });
   } catch (e) {
     next(e);
+  }
+};
+
+const findUserById = async (req, res, next) => {
+  try {
+    const split = req.headers.authorization?.split(" ")[1];
+
+    if (!split) {
+      return res.status(401).json({
+        status: 401,
+        message: "Token is missing.",
+      });
+    }
+
+    const decodeToken = verifyJWT(split);
+
+    const result = await publicService.findUserById(decodeToken.data.id);
+
+    res.status(200).json({
+      status: 200,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
   }
 };
 
@@ -173,4 +198,5 @@ export default {
   getBookById,
   loanBook,
   returnBook,
+  findUserById,
 };

@@ -41,4 +41,16 @@ adminApi.post(
   adminController.updateBook,
 );
 
+adminApi.post(
+  "/api/admin/update-user",
+  [authMiddleware, rolesMiddleware],
+  adminController.updateUser,
+);
+
+adminApi.get(
+  "/api/admin/get-all-user",
+  [authMiddleware, rolesMiddleware],
+  adminController.getAllUser
+)
+
 export { adminApi };

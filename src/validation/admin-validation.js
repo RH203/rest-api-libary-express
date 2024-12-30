@@ -64,4 +64,18 @@ const updateBookValidation = Joi.object({
 const removeBookValidationById = Joi.object({
   id: Joi.number().required(),
 });
-export { newBookValidation, removeBookValidationById, updateBookValidation };
+
+const updateUserValidation = Joi.object({
+  id: Joi.number().required(),
+  name: Joi.string().max(255).required(),
+  email: Joi.string().max(255).required().email(),
+  role: Joi.string().valid("Admin", "Student").required(),
+  gender: Joi.string().valid("Male", "Female").required(),
+});
+
+export {
+  newBookValidation,
+  removeBookValidationById,
+  updateBookValidation,
+  updateUserValidation,
+};

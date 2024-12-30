@@ -13,7 +13,6 @@ import {
   loanValidation,
   returnValidation,
 } from "../validation/loan-validation.js";
-import { tr } from "@faker-js/faker";
 import { logger } from "../app/logger.js";
 
 /**
@@ -55,7 +54,7 @@ const registrasi = async (req, res) => {
     },
   });
 
-  if (result) {
+  if (!result) {
     throw new ResponseError(400, "Failed create account");
   }
 
@@ -81,6 +80,7 @@ const login = async (req, res) => {
   const account = await prismaClient.student.findFirst({
     where: { email: data.email },
     select: {
+      id: true,
       name: true,
       email: true,
       password: true,
@@ -104,7 +104,35 @@ const login = async (req, res) => {
     throw new ResponseError(400, "Email or password is wrong!");
   }
 
-  return generateJWT(account.name, account.role);
+  return generateJWT(account.id, account.name, account.role);
+};
+
+/**
+ * Get user detail by id
+ */
+const findUserById = async id => {
+  if (!id) {
+    throw new ResponseError(401, "User not found!");
+  }
+
+  const parseId = parseInt(id);
+
+  const result = await prismaClient.student.findFirst({
+    where: { id: parseId },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      gender: true,
+    },
+  });
+
+  if (!result) {
+    throw new ResponseError(401, "User not found!");
+  }
+
+  return result;
 };
 
 /**
@@ -183,7 +211,7 @@ const getBookById = async id => {
       description: true,
       isbn: true,
       stok: true,
-      deteled_at: true,
+      deleted_at: true,
       genres: {
         select: {
           genre: {
@@ -355,4 +383,5 @@ export default {
   getBookById,
   loanBook,
   returnBook,
+  findUserById,
 };

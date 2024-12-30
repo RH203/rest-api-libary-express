@@ -37,6 +37,15 @@ publicApi.post("/api/user/registrasi", publicController.registrasi);
 publicApi.get("/api/user/login", publicController.login);
 
 /**
+ * Get user by id
+ */
+publicApi.get(
+  "/api/user/detail-user",
+  authMiddleware,
+  publicController.findUserById,
+);
+
+/**
  * Route untuk melihat daftar buku yang tersedia.
  *
  * Route ini digunakan untuk mendapatkan daftar buku yang tersedia di sistem. Middleware `authMiddleware`
