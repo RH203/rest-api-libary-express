@@ -1,5 +1,6 @@
 import adminService from "../service/admin-service.js";
 import { logger } from "../app/logger.js";
+import {prismaClient} from "../app/database.js";
 
 /**
  * Menambahkan buku baru melalui layanan admin.
@@ -79,16 +80,91 @@ const updateUser = async (req, res, next) => {
 
 const getAllUser = async (req, res, next) => {
   try {
-  const result = await adminService.getAllUser();
+    const result = await adminService.getAllUser();
 
-  res.status(200).json({
-    status: 200,
-    data: result,
-  })
+    res.status(200).json({
+      status: 200,
+      data: result,
+    });
+  } catch (error) {
+    next(error.status);
+  }
+};
+
+const deleteUser = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    if (!id) {
+      res.status(404).json({
+        status: 404,
+        message: "Not Found",
+      });
+      return;
+    }
+
+    const result = await adminService.deleteUser(id);
+
+    res.status(200).json({
+      status: 200,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const addNewPublisher = async (req, res, next) => {
+  try {
+const result = await adminService.addNewPublisher(req.body)
+
+    res.status(200).json({
+      status: 200,
+      data: result,
+    })
   } catch (error) {
     next(error);
   }
 
+}
+
+const addNewGenre = async (req, res, next) => {
+  try {
+    const result = await adminService.addNewGenre(req.body)
+
+    res.status(200).json({
+      status: 200,
+      data: result,
+    })
+  } catch (error) {
+    next(error);
+  }
+
+}
+
+const getAllGenre = async (req, res, next) => {
+  try {
+const result = await adminService.getAllGenre()
+
+    res.status(200).json({
+      status: 200,
+      data: result,
+    })
+  } catch (error) {
+    next(error);
+  }
+}
+
+const getAllPublisher = async (req, res, next) => {
+  try {
+    const result = await adminService.getAllPublisher()
+
+    res.status(200).json({
+      status: 200,
+      data: result,
+    })
+  } catch (error) {
+    next(error);
+  }
 }
 
 export default {
@@ -96,5 +172,10 @@ export default {
   removeBook,
   updateBook,
   updateUser,
-  getAllUser
+  getAllUser,
+  deleteUser,
+  addNewPublisher,
+  addNewGenre,
+  getAllPublisher,
+  getAllGenre
 };

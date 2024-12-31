@@ -50,7 +50,36 @@ adminApi.post(
 adminApi.get(
   "/api/admin/get-all-user",
   [authMiddleware, rolesMiddleware],
-  adminController.getAllUser
+  adminController.getAllUser,
+);
+
+adminApi.post(
+  "/api/admin/delete-user/:id",
+  [authMiddleware, rolesMiddleware],
+  adminController.deleteUser,
+);
+
+adminApi.post(
+  "/api/admin/new-publisher",
+  [authMiddleware, rolesMiddleware],
+  adminController.addNewPublisher
+)
+
+adminApi.post(
+  "/api/admin/new-genre",
+  [authMiddleware, rolesMiddleware],
+  adminController.addNewGenre
+)
+
+adminApi.get(
+  "/api/admin/show-genre",
+  [authMiddleware, rolesMiddleware],
+  adminController.getAllGenre
+)
+adminApi.get(
+  "/api/admin/show-publisher",
+  [authMiddleware, rolesMiddleware],
+  adminController.getAllPublisher
 )
 
 export { adminApi };
