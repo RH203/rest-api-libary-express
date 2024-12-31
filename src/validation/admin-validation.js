@@ -73,9 +73,19 @@ const updateUserValidation = Joi.object({
   gender: Joi.string().valid("Male", "Female").required(),
 });
 
+const newPublisherValidattion = Joi.object({
+  data: Joi.array().items(Joi.string().max(255).required()),
+})
+
+const newGenreValidation = Joi.object({
+  data: Joi.array().items(Joi.string().max(255).required()),
+})
+
 export {
   newBookValidation,
   removeBookValidationById,
   updateBookValidation,
   updateUserValidation,
+  newPublisherValidattion,
+  newGenreValidation
 };

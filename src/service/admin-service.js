@@ -1,12 +1,13 @@
 import { validate } from "../validation/validation.js";
 import {
-  newBookValidation,
+  newBookValidation, newGenreValidation, newPublisherValidattion,
   removeBookValidationById,
   updateBookValidation,
   updateUserValidation,
 } from "../validation/admin-validation.js";
 import { prismaClient } from "../app/database.js";
 import { ResponseError } from "../error/response-error.js";
+import { logger } from "../app/logger.js";
 
 /**
  * Menambahkan buku baru ke dalam database.
@@ -180,6 +181,11 @@ const getAllUser = async () => {
       deleted_at: true,
       ban_status: true,
     },
+    where: {
+      ban_status: false,
+      deleted_at: null,
+      role: "Student",
+    },
   });
 
   if (!result) {
@@ -189,16 +195,96 @@ const getAllUser = async () => {
   return result;
 };
 
+/**
+ * Delete user
+ */
+const deleteUser = async id => {
+  if (!id) {
+    throw new ResponseError(404, "User not found!");
+  }
+  logger.info(id);
+  const parseId = parseInt(id);
+  logger.info(parseId);
 
-// Remove user
+  const result = await prismaClient.student.update({
+    where: { id: parseId },
+    data: {
+      deleted_at: new Date(),
+    },
+  });
 
-// Add new Publisher
-// Add new Genre
+  return `Successfully deleted id ${parseId}!`;
+};
+
+/**
+ * Add new publisher
+ */
+const addNewPublisher = async (req) => {
+  const {error, data} = validate(newPublisherValidattion, req)
+
+  const convertData = data.map(data => ({
+    name: data
+  }))
+
+  const result = await prismaClient.publisher.createMany({
+    data: convertData
+  })
+
+  return `Successfully added new publisher!`;
+}
+
+/**
+ * Add new genre
+ */
+const addNewGenre = async (req) => {
+  const {error, data} = validate(newGenreValidation, req)
+
+  const convertData = data.map(data => ({
+    name: data
+  }))
+
+  const result = await prismaClient.genre.createMany({
+    data: convertData
+  })
+
+  return `Successfully added new genre!`;
+}
+
+/**
+ * Show all genre
+ */
+const getAllGenre = async (req) => {
+  return prismaClient.genre.findMany({
+    select: {
+      id: true,
+      name: true,
+    }
+  })
+}
+
+/**
+ * Show all publisher
+ */
+const getAllPublisher = async (req) => {
+  return prismaClient.publisher.findMany({
+    select: {
+      id: true,
+      name: true,
+    }
+  })
+}
+
+
 
 export default {
   addNewBook,
   removeBook,
   updateBook,
   updateUser,
-  getAllUser
+  getAllUser,
+  deleteUser,
+  addNewPublisher,
+  addNewGenre,
+  getAllGenre,
+  getAllPublisher
 };
