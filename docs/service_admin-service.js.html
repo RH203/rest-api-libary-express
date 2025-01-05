@@ -1,38 +1,41 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
+<head>
+    <meta charset="utf-8">
     <title>JSDoc: Source: service/admin-service.js</title>
 
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="styles/prettify-tomorrow.css"
-    />
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css" />
-  </head>
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
 
-  <body>
-    <div id="main">
-      <h1 class="page-title">Source: service/admin-service.js</h1>
+<body>
 
-      <section>
+<div id="main">
+
+    <h1 class="page-title">Source: service/admin-service.js</h1>
+
+    
+
+
+
+    
+    <section>
         <article>
-          <pre
-            class="prettyprint source linenums"
-          ><code>import { validate } from "../validation/validation.js";
+            <pre class="prettyprint source linenums"><code>import { validate } from "../validation/validation.js";
 import {
-  newBookValidation,
+  newBookValidation, newGenreValidation, newPublisherValidattion,
   removeBookValidationById,
   updateBookValidation,
+  updateUserValidation,
 } from "../validation/admin-validation.js";
 import { prismaClient } from "../app/database.js";
 import { ResponseError } from "../error/response-error.js";
+import { logger } from "../app/logger.js";
 
 /**
  * Menambahkan buku baru ke dalam database.
@@ -65,12 +68,15 @@ const addNewBook = async (req, res) => {
       publisherBookId: bookData.publisherBookId,
     },
   });
-  for (let i = 0; i &lt; bookData.genres.length; i++) {
-    const genreId = bookData.genres[i];
-    await prismaClient.genreBook.create({
-      data: { genreId: genreId, bookId: newBook.id },
-    });
-  }
+
+  const genreData = bookData.genres.map(genreId => ({
+    genreId: genreId,
+    bookId: newBook.id,
+  }));
+
+  await prismaClient.genreBook.createMany({
+    data: genreData,
+  });
 
   return "Book created successfully!";
 };
@@ -95,8 +101,8 @@ const updateBook = async (req, res) => {
     where: { title: data.title },
   });
 
-  if (existingBook) {
-    throw new ResponseError(400, "Book already exists!");
+  if (!existingBook) {
+    throw new ResponseError(400, "Book doesn't exists!");
   }
   const updatedBook = await prismaClient.book.update({
     where: { id: data.id },
@@ -114,12 +120,14 @@ const updateBook = async (req, res) => {
     where: { bookId: updatedBook.id },
   });
 
-  for (let i = 0; i &lt; data.genres.length; i++) {
-    const genreId = data.genres[i];
-    await prismaClient.genreBook.create({
-      data: { genreId: genreId, bookId: updatedBook.id },
-    });
-  }
+  const genreData = data.genres.map(genreId => ({
+    genreId: genreId,
+    bookId: data.id,
+  }));
+
+  await prismaClient.genreBook.createMany({
+    data: genreData,
+  });
 
   return "Book updated successfully!";
 };
@@ -148,95 +156,186 @@ const removeBook = async (req, res) => {
     throw new ResponseError(404, `Book doesn't exist`);
   }
 
-  const currentDate = new Date.now();
-  const convertDate = currentDate.toISOString().slice(0, 19).replace("T", " ");
-
   const deleteBook = await prismaClient.book.update({
     where: { id: data.id },
     data: {
-      updated_at: convertDate,
+      deleted_at: new Date(),
     },
   });
 
   return "Delete successfully";
 };
 
-// Edit user
-// See all user
-// Remove user
+/**
+ * Edit user
+ */
+const updateUser = async data => {
+  const validateData = validate(updateUserValidation, data);
 
-// Add new Publisher
-// Add new Genre
+  const existingUser = await prismaClient.student.findUnique({
+    where: { id: data.id },
+  });
+
+  if (!existingUser) {
+    throw new ResponseError(404, "User not found!");
+  }
+
+  return prismaClient.student.update({
+    where: { id: data.id },
+    data: {
+      name: data.name,
+      email: data.email,
+      role: data.role,
+      gender: data.gender,
+    },
+  });
+};
+
+/**
+ *
+ * See all user
+ * @returns {Promise&lt;GetFindResult&lt;Prisma.$StudentPayload&lt;DefaultArgs>, {select: {name: boolean, email: boolean, role: boolean, gender: boolean, update_at: boolean, created_at: boolean, deleted_at: boolean, ban_status: boolean}}, {}>[]>}
+ */
+const getAllUser = async () => {
+  const result = await prismaClient.student.findMany({
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      gender: true,
+      update_at: true,
+      created_at: true,
+      deleted_at: true,
+      ban_status: true,
+    },
+    where: {
+      ban_status: false,
+      deleted_at: null,
+      role: "Student",
+    },
+  });
+
+  if (!result) {
+    throw new ResponseError(404, "Something went wrong!");
+  }
+
+  return result;
+};
+
+/**
+ * Delete user
+ */
+const deleteUser = async id => {
+  if (!id) {
+    throw new ResponseError(404, "User not found!");
+  }
+  logger.info(id);
+  const parseId = parseInt(id);
+  logger.info(parseId);
+
+  const result = await prismaClient.student.update({
+    where: { id: parseId },
+    data: {
+      deleted_at: new Date(),
+    },
+  });
+
+  return `Successfully deleted id ${parseId}!`;
+};
+
+/**
+ * Add new publisher
+ */
+const addNewPublisher = async (req) => {
+  const {error, data} = validate(newPublisherValidattion, req)
+
+  const convertData = data.map(data => ({
+    name: data
+  }))
+
+  const result = await prismaClient.publisher.createMany({
+    data: convertData
+  })
+
+  return `Successfully added new publisher!`;
+}
+
+/**
+ * Add new genre
+ */
+const addNewGenre = async (req) => {
+  const {error, data} = validate(newGenreValidation, req)
+
+  const convertData = data.map(data => ({
+    name: data
+  }))
+
+  const result = await prismaClient.genre.createMany({
+    data: convertData
+  })
+
+  return `Successfully added new genre!`;
+}
+
+/**
+ * Show all genre
+ */
+const getAllGenre = async (req) => {
+  return prismaClient.genre.findMany({
+    select: {
+      id: true,
+      name: true,
+    }
+  })
+}
+
+/**
+ * Show all publisher
+ */
+const getAllPublisher = async (req) => {
+  return prismaClient.publisher.findMany({
+    select: {
+      id: true,
+      name: true,
+    }
+  })
+}
+
+
 
 export default {
   addNewBook,
   removeBook,
   updateBook,
+  updateUser,
+  getAllUser,
+  deleteUser,
+  addNewPublisher,
+  addNewGenre,
+  getAllGenre,
+  getAllPublisher
 };
 </code></pre>
         </article>
-      </section>
-    </div>
+    </section>
 
-    <nav>
-      <h2><a href="index.html">Home</a></h2>
-      <h3>Classes</h3>
-      <ul>
-        <li><a href="ResponseError.html">ResponseError</a></li>
-      </ul>
-      <h3>Global</h3>
-      <ul>
-        <li><a href="global.html#addNewBook">addNewBook</a></li>
-        <li><a href="global.html#authMiddleware">authMiddleware</a></li>
-        <li><a href="global.html#capitalizeWord">capitalizeWord</a></li>
-        <li><a href="global.html#errorMiddleware">errorMiddleware</a></li>
-        <li><a href="global.html#generateJWT">generateJWT</a></li>
-        <li><a href="global.html#getBookById">getBookById</a></li>
-        <li><a href="global.html#getBookList">getBookList</a></li>
-        <li><a href="global.html#loanBook">loanBook</a></li>
-        <li><a href="global.html#loanValidation">loanValidation</a></li>
-        <li><a href="global.html#logger">logger</a></li>
-        <li><a href="global.html#login">login</a></li>
-        <li>
-          <a href="global.html#loginUserValidation">loginUserValidation</a>
-        </li>
-        <li><a href="global.html#newBookValidation">newBookValidation</a></li>
-        <li><a href="global.html#prismaClient">prismaClient</a></li>
-        <li><a href="global.html#registrasi">registrasi</a></li>
-        <li>
-          <a href="global.html#registrationUserValidation"
-            >registrationUserValidation</a
-          >
-        </li>
-        <li><a href="global.html#removeBook">removeBook</a></li>
-        <li>
-          <a href="global.html#removeBookValidationById"
-            >removeBookValidationById</a
-          >
-        </li>
-        <li><a href="global.html#returnBook">returnBook</a></li>
-        <li><a href="global.html#returnValidation">returnValidation</a></li>
-        <li><a href="global.html#rolesMiddleware">rolesMiddleware</a></li>
-        <li><a href="global.html#updateBook">updateBook</a></li>
-        <li>
-          <a href="global.html#updateBookValidation">updateBookValidation</a>
-        </li>
-        <li><a href="global.html#validate">validate</a></li>
-        <li><a href="global.html#verifyJWT">verifyJWT</a></li>
-      </ul>
-    </nav>
 
-    <br class="clear" />
 
-    <footer>
-      Documentation generated by
-      <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Wed Dec 25
-      2024 21:16:57 GMT+0700 (Western Indonesia Time)
-    </footer>
 
-    <script>
-      prettyPrint();
-    </script>
-    <script src="scripts/linenumber.js"></script>
-  </body>
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ResponseError.html">ResponseError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addNewBook">addNewBook</a></li><li><a href="global.html#addNewGenre">addNewGenre</a></li><li><a href="global.html#addNewPublisher">addNewPublisher</a></li><li><a href="global.html#authMiddleware">authMiddleware</a></li><li><a href="global.html#capitalizeWord">capitalizeWord</a></li><li><a href="global.html#deleteUser">deleteUser</a></li><li><a href="global.html#errorMiddleware">errorMiddleware</a></li><li><a href="global.html#findUserById">findUserById</a></li><li><a href="global.html#generateJWT">generateJWT</a></li><li><a href="global.html#getAllGenre">getAllGenre</a></li><li><a href="global.html#getAllPublisher">getAllPublisher</a></li><li><a href="global.html#getAllUser">getAllUser</a></li><li><a href="global.html#getBookById">getBookById</a></li><li><a href="global.html#getBookList">getBookList</a></li><li><a href="global.html#loanBook">loanBook</a></li><li><a href="global.html#loanValidation">loanValidation</a></li><li><a href="global.html#logger">logger</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#loginUserValidation">loginUserValidation</a></li><li><a href="global.html#newBookValidation">newBookValidation</a></li><li><a href="global.html#prismaClient">prismaClient</a></li><li><a href="global.html#registrasi">registrasi</a></li><li><a href="global.html#registrationUserValidation">registrationUserValidation</a></li><li><a href="global.html#removeBook">removeBook</a></li><li><a href="global.html#removeBookValidationById">removeBookValidationById</a></li><li><a href="global.html#returnBook">returnBook</a></li><li><a href="global.html#returnValidation">returnValidation</a></li><li><a href="global.html#rolesMiddleware">rolesMiddleware</a></li><li><a href="global.html#updateBook">updateBook</a></li><li><a href="global.html#updateBookValidation">updateBookValidation</a></li><li><a href="global.html#updateUser">updateUser</a></li><li><a href="global.html#validate">validate</a></li><li><a href="global.html#verifyJWT">verifyJWT</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Tue Dec 31 2024 18:42:04 GMT+0700 (Western Indonesia Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
 </html>
